@@ -96,7 +96,7 @@
                             <li><a href="ppm-services.html" title="">About us</a></li>
                             <li><a href="index.html#packages" title="">Packages</a></li>
                             <li><a href="content-elements.html" title="">Guide</a></li>
-                            <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
+                            <li><a href="prtemplates.html" title="">PR Templates</a></li>
                             <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Home</a>
                                 <ul class="children mb-0 list-unstyled">
                                     <li><a href="index.html" title="">SEO Agency</a></li>
@@ -205,7 +205,7 @@
                         <li><a href="ppm-services.html" title="">About us</a></li>
                         <li><a href="index.html#packages" title="">Packages</a></li>
                         <li><a href="content-elements.html" title="">Guide</a></li>
-                        <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
+                        <li><a href="prtemplates.html" title="">PR Templates</a></li>
                         <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Pages</a>
                             <ul class="children mb-0 list-unstyled">
                                 <li><a href="seo-services.html" title="">SEO Services</a></li>
@@ -363,7 +363,7 @@
                 <li><a href="ppm-services.html" title="">About us</a></li>
                 <li><a href="index.html#packages" title="">Packages</a></li>
                 <li><a href="content-elements.html" title="">Guide</a></li>
-                <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
+                <li><a href="prtemplates.html" title="">PR Templates</a></li>
                 <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Home</a>
                     <ul class="children mb-0 list-unstyled">
                         <li><a href="index.html" title="">SEO Agency</a></li>
@@ -607,19 +607,10 @@
     </section> -->
    
     <section>
-        <div id="prtemplate" class="w-100 position-relative">
+        <div  class="w-100 position-relative">
             <div class="container">
-                <div class="devider bg-color25 mt-40 mb-70 w-100"></div>
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 col-lg-12">
-                        <div class="content-wrap mb-40 position-relative w-100">
-                           
-                            <h1>PR Templates</h1>
-                            
-                            <div class="toggle w-100" id="toggle2">  </div>
-
-                        </div>
-                    </div>
+                   
                     <!-- <div class="col-md-12 col-sm-12 col-lg-6">
                         <div class="content-wrap mb-40 position-relative w-100">
                             <h1>Accordions</h1>
@@ -1226,63 +1217,7 @@
         </div>
     </div><!-- Bottom Bar -->
 </main><!-- Main Wrapper -->
-<script>
-    // Array containing titles, descriptions, and PDF paths
-    const contentArray = [
-        { title: "Sport Press Release", description: "Announce the latest sporting events, achievements, and news with our expertly crafted sport press release. Perfect for sharing match results, athlete milestones, and upcoming competitions.", pdfPath: "MainFiles/Pressefy/assets/images/prtemplates/sport-press-release.pdf" },
-        { title: "Lifestyle Press Release", description: "Highlight trends, fashion, wellness, and culture with a lifestyle press release designed to captivate and engage readers. Ideal for promoting products, services, and events in the lifestyle sector.", pdfPath: "/assets/images/prtemplates/lifestyle-press-release.pdf" },
-        { title: "B2B Press Release", description: "Communicate important business-to-business news, partnerships, and developments with a B2B press release that emphasizes professionalism and industry impact.", pdfPath: "/assets/images/prtemplates/b2b-press-release.pdf" },
-        { title: "Technology Press Release", description: "Showcase innovative tech products, services, or advancements with a technology press release that highlights cutting-edge developments and the future of technology.", pdfPath: "/assets/images/prtemplates/technology-press-release.pdf" },
-        { title: "Press Release", description: "A versatile press release template suitable for a wide range of announcements, from company news to product launches. Tailor it to meet the needs of any industry.", pdfPath: "/assets/images/prtemplates/press-release.pdf" },
-        { title: "Health Press Release", description: "Deliver crucial health-related news, medical advancements, or wellness programs with a health press release designed to inform and educate the public.", pdfPath: "/assets/images/prtemplates/health-press-release.pdf" },
-        { title: "Crypto and Blockchain Press Release", description: "Navigate the complex world of digital currencies and blockchain technology with a press release tailored for the crypto industry, emphasizing innovation and security.", pdfPath: "/assets/images/prtemplates/crypto-blockchain-press-release.pdf" },
-        { title: "Retail Press Release", description: "Promote retail openings, sales events, or product launches with a retail press release that drives customer interest and boosts foot traffic.", pdfPath: "/assets/images/prtemplates/retail-press-release.pdf" },
-        { title: "AI Press Release", description: "Announce breakthroughs in artificial intelligence with an AI press release that highlights the latest in machine learning, automation, and intelligent systems.", pdfPath: "/assets/images/prtemplates/ai-press-release.pdf" },
-        { title: "Finance Press Release", description: "Communicate financial news, market insights, or investment opportunities with a finance press release that speaks to investors, analysts, and stakeholders.", pdfPath: "/assets/images/prtemplates/finance-press-release.pdf" }
-    ];
 
-    // Function to create content dynamically
-    function createToggleItems() {
-        const toggleContainer = document.getElementById('toggle2');
-
-        contentArray.forEach((item) => {
-            const toggleItem = document.createElement('div');
-            toggleItem.classList.add('toggle-item', 'v2', 'position-relative', 'w-100');
-
-            const toggleTitle = document.createElement('h4');
-            toggleTitle.classList.add('mb-0', 'position-relative');
-            toggleTitle.innerHTML = `<i></i>${item.title}`;
-            toggleItem.appendChild(toggleTitle);
-
-            const toggleContent = document.createElement('div');
-            toggleContent.classList.add('toggle-content', 'w-100');
-            toggleContent.innerHTML = `<p class="mb-0">${item.description}</p>`;
-
-            const downloadButton = document.createElement('button');
-            downloadButton.classList.add('btn', 'btn-primary', 'mt-2');
-            downloadButton.textContent = 'Download Sample PDF';
-            downloadButton.setAttribute('onclick', `window.location.href='${item.pdfPath}';`);
-
-            toggleContent.appendChild(downloadButton);
-            toggleItem.appendChild(toggleContent);
-            toggleContainer.appendChild(toggleItem);
-        });
-    }
-
-    // Call the function to populate the content
-    createToggleItems();
-
-    // Toggle functionality
-    if ($("#toggle2").length > 0) {
-        $(function () {
-            $('#toggle2 .toggle-content').hide();
-            $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
-            $('#toggle2 h4').on("click", function () {
-                $(this).next().slideToggle('slow').parent().toggleClass("active");
-            });
-        });
-    }
-</script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
