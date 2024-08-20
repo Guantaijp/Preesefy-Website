@@ -458,17 +458,22 @@
                                 <div class="toggle w-100" id="toggle2"> 
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Express Checkout</h4>
-                                        <div class="toggle-content w-100">
-                                            <div class="field-box w-100">
-                                                <label>First name *</label>
-                                                <input type="text">
-                                            </div>  
-                                            <div class="field-box w-100">
-                                                <label>Last name *</label>
-                                                <input type="text">
-                                            </div> 
-                                            <a class="thm-btn brd-btn rounded-pill d-inline-block mt-10 " href="checkout.html" title="">Order Now</a>
-                
+                                        <div class="row toggle-content w-100">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="firstName" class="form-label">First name *</label>
+                                                    <input type="text" class="form-control" id="firstName">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="lastName" class="form-label">Last name *</label>
+                                                    <input type="text" class="form-control" id="lastName">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <a class="btn btn-outline-primary rounded-pill mt-3 d-inline-block" href="" title="Order Now">Next</a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="toggle-item position-relative w-100">
@@ -483,19 +488,117 @@
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Writing Package</h4>
                                         <div class="toggle-content w-100">
-                                            <p>Pick where to publish your news story. Use the Popular Package for general topics, Alternative Package for complex topics like crypto or CBD, Authority Package for SEO, or Ultimate Package for best results. </p>
-                                    
-                                            <a class="thm-btn brd-btn rounded-pill d-inline-block mt-10 " href="checkout.html" title="">Order Now</a>
-                
+                                            <div class="row">
+                                                <div class="col-12 mb-4">
+                                                    <p>Write your own news story or pick a package to let our skilled human writers craft the perfect story for you.</p>
+                                                </div>
+                                            
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="border p-3 rounded">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="writingPackage" id="writeYourOwn" value="writeYourOwn">
+                                                            <label class="form-check-label" for="writeYourOwn">
+                                                                <strong>Write Your Own Story</strong><br>
+                                                                Upload your news story & we'll publish it on major news sites<br>
+                                                                <strong>Free</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="border p-3 rounded">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="writingPackage" id="shortNewsStory" value="shortNewsStory">
+                                                            <label class="form-check-label" for="shortNewsStory">
+                                                                <strong>Short News Story</strong><br>
+                                                                350 word news story, written and SEO optimized, with 2 revisions included<br>
+                                                                <strong>$40</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="border p-3 rounded">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="writingPackage" id="regularNewsStory" value="regularNewsStory">
+                                                            <label class="form-check-label" for="regularNewsStory">
+                                                                <strong>Regular News Story</strong><br>
+                                                                500 word news story, written and SEO optimized, with 3 revisions included<br>
+                                                                <strong>$60</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="border p-3 rounded">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="writingPackage" id="longNewsStory" value="longNewsStory">
+                                                            <label class="form-check-label" for="longNewsStory">
+                                                                <strong>Long News Story</strong><br>
+                                                                700+ word news story, written and SEO optimized, with unlimited revisions included<br>
+                                                                <strong>$80</strong>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Brand Details</h4>
                                         <div class="toggle-content w-100">
-                                            <p>Pick where to publish your news story. Use the Popular Package for general topics, Alternative Package for complex topics like crypto or CBD, Authority Package for SEO, or Ultimate Package for best results. </p>
-                                    
-                                            <a class="thm-btn brd-btn rounded-pill d-inline-block mt-10 " href="checkout.html" title="">Order Now</a>
-                
+                                            <div class="row">
+                                                <div class="col-12 mb-4">
+                                                    <h4>Brand Details</h4>
+                                                    <p>News sites require the following brand info to be displayed at the end of each publication. The email will be private behind a contact form.</p>
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="brandName" class="form-label">Brand Name</label>
+                                                    <input type="text" class="form-control" id="brandName" placeholder="Enter your brand name">
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="country" class="form-label">Country</label>
+                                                    <select class="form-select" id="country">
+                                                        <option selected>Select...</option>
+                                                        <option value="US">United States</option>
+                                                        <option value="UK">United Kingdom</option>
+                                                        <option value="CA">Canada</option>
+                                                        <!-- Add more countries as needed -->
+                                                    </select>
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="websiteLinks" class="form-label">Website & Links</label>
+                                                    <input type="text" class="form-control" id="websiteLinks" placeholder="Type something and press enter...">
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="representativeName" class="form-label">Representative Name</label>
+                                                    <input type="text" class="form-control" id="representativeName" placeholder="Enter representative name">
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="representativeEmail" class="form-label">Representative Email</label>
+                                                    <input type="email" class="form-control" id="representativeEmail" placeholder="Enter representative email">
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="address" class="form-label">Address</label>
+                                                    <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                                                </div>
+                                            
+                                                <div class="col-12 mb-3">
+                                                    <label for="phone" class="form-label">Phone</label>
+                                                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="toggle-item position-relative w-100">
