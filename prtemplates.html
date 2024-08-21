@@ -20,6 +20,33 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+    <style>
+   .popup {
+    position: fixed;
+    text-align: left;
+    align-items: start;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+    </style>
 <main>
     <header class="style1 w-100">
         <div class="topbar bg-color4 w-100">
@@ -464,6 +491,25 @@
 
                         </div>
                     </div>
+                    <div id="downloadPopup" class="popup text-start" style="display: none;">
+                        <div class="popup-content">
+                            <span class="close">&times;</span>
+                            <h5 class="text-start">Enter your details to download the PDF</h5>
+                            <form id="downloadForm">
+                                <div class="mb-3 text-start">
+                                    <label for="firstName" class="form-label text-start">Name:</label>
+                                    <input type="text" id="name" name="name" required class="form-control">
+                                </div>
+                                <div class="text-start">
+                                    <label for="email" class="form-label text-start">Email:</label>
+                                    <input type="email" id="email" name="email" required class="form-control">
+                                </div>
+                                <input type="hidden" id="pdfPath" name="pdfPath">
+                                <button type="button" id="submitButton" class="thm-btn brd-btn rounded-pill d-inline-block mt-4">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    
                     <!-- <div class="col-md-12 col-sm-12 col-lg-6">
                         <div class="content-wrap mb-40 position-relative w-100">
                             <h1>Accordions</h1>
@@ -694,47 +740,95 @@
         { title: "Retail Press Release", description: "Promote retail openings, sales events, or product launches with a retail press release that drives customer interest and boosts foot traffic.", pdfPath: "https://drive.google.com/uc?export=download&id=1FAfKT7f34ZD3JuTSgNXNilZiGY0rtpj3" },
     ];
 
-    // Function to create content dynamically
-    function createToggleItems() {
-        const toggleContainer = document.getElementById('toggle2');
 
-        contentArray.forEach((item) => {
-            const toggleItem = document.createElement('div');
-            toggleItem.classList.add('toggle-item', 'v2', 'position-relative', 'w-100');
+// Function to create content dynamically
+function createToggleItems() {
+    const toggleContainer = document.getElementById('toggle2');
 
-            const toggleTitle = document.createElement('h4');
-            toggleTitle.classList.add('mb-0', 'position-relative');
-            toggleTitle.innerHTML = `<i></i>${item.title}`;
-            toggleItem.appendChild(toggleTitle);
+    contentArray.forEach((item) => {
+        const toggleItem = document.createElement('div');
+        toggleItem.classList.add('toggle-item', 'v2', 'position-relative', 'w-100');
 
-            const toggleContent = document.createElement('div');
-            toggleContent.classList.add('toggle-content', 'w-100');
-            toggleContent.innerHTML = `<p class="mb-0">${item.description}</p>`;
+        const toggleTitle = document.createElement('h4');
+        toggleTitle.classList.add('mb-0', 'position-relative');
+        toggleTitle.innerHTML = `<i></i>${item.title}`;
+        toggleItem.appendChild(toggleTitle);
 
-            const downloadButton = document.createElement('button');
-            downloadButton.classList.add('btn', 'btn-primary', 'mt-2');
-            downloadButton.textContent = 'Download Sample PDF';
-            downloadButton.setAttribute('onclick', `window.location.href='${item.pdfPath}';`);
+        const toggleContent = document.createElement('div');
+        toggleContent.classList.add('toggle-content', 'w-100');
+        toggleContent.innerHTML = `<p class="mb-0">${item.description}</p>`;
 
-            toggleContent.appendChild(downloadButton);
-            toggleItem.appendChild(toggleContent);
-            toggleContainer.appendChild(toggleItem);
-        });
+        const downloadButton = document.createElement('button');
+        downloadButton.classList.add('btn', 'mt-2', 'thm-btn', 'brd-btn' ,'rounded-pill', 'd-inline-block');
+        downloadButton.textContent = 'Download Sample PDF';
+        downloadButton.setAttribute('onclick', `showPopup('${item.pdfPath}');`);
+
+        toggleContent.appendChild(downloadButton);
+        toggleItem.appendChild(toggleContent);
+        toggleContainer.appendChild(toggleItem);
+    });
+}
+
+const closeButton = document.querySelector('.close');
+    const popup = document.getElementById('downloadPopup');
+
+    // Add event listener to close the popup when the close button is clicked
+    closeButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+// Function to show the popup and set the PDF path
+function showPopup(pdfPath) {
+    document.getElementById('pdfPath').value = pdfPath;
+    document.getElementById('downloadPopup').style.display = 'block';
+}
+
+// Event listener for form submission button
+document.getElementById('submitButton').addEventListener('click', function() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const pdfPath = document.getElementById('pdfPath').value;
+
+    if (name && email) {
+        // Here you would send the email
+        sendEmail(name, email, pdfPath);
+
+        // After sending email, download the PDF
+        window.location.href = pdfPath;
+
+        // Close the popup
+        document.getElementById('downloadPopup').style.display = 'none';
+    } else {
+        alert('Please enter both your name and email.');
     }
+});
 
-    // Call the function to populate the content
-    createToggleItems();
+// Function to send email (this is a placeholder, implement actual email sending logic)
+function sendEmail(name, email, pdfPath) {
+    // Replace this with your email sending logic
+    console.log(`Sending email: Name=${name}, Email=${email}, PDF=${pdfPath}`);
+    // You can use EmailJS, a backend service, or any email API to send the email
+}
 
-    // Toggle functionality
-    if ($("#toggle2").length > 0) {
-        $(function () {
-            $('#toggle2 .toggle-content').hide();
-            $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
-            $('#toggle2 h4').on("click", function () {
-                $(this).next().slideToggle('slow').parent().toggleClass("active");
-            });
+// Call the function to populate the content
+createToggleItems();
+
+// Toggle functionality
+if ($("#toggle2").length > 0) {
+    $(function () {
+        $('#toggle2 .toggle-content').hide();
+        $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
+        $('#toggle2 h4').on("click", function () {
+            $(this).next().slideToggle('slow').parent().toggleClass("active");
         });
-    }
+    });
+}
+
+// Close the popup when the user clicks on <span> (x)
+document.querySelector('.popup .close').onclick = function() {
+    document.getElementById('downloadPopup').style.display = 'none';
+};
+
 </script>
 
 <script src="assets/js/jquery.min.js"></script>
