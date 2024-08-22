@@ -1689,6 +1689,27 @@
             </div>
         </div>
     </section>
+    <section id="customized-packages">
+        <div class="w-100 pt-10 pb-130 position-relative">
+            <div class="fixed-bg bg-norepeate back-size-cont back-post-tp" style="background-image: url(assets/images/bg-shp-3.png);"></div>
+            <div class="particles-wrap position-absolute w-100">
+                <div id="particle-3" class="particles-js top_left mx-w25 w-100" data-color="#3E4A59" data-size="90" data-count="1" data-speed="2" data-hide="1200" data-shape="image" data-mode="bounce" data-image-url="assets/images/particle-1.png" data-image-width="150" data-image-height="150">
+                    <canvas></canvas>
+                </div>
+            </div>
+            <div id="custom-packages" class="container">
+                <div class="sec-title text-center w-100 position-relative">
+                    <h2 class="mb-0"><span>Customized 20 PR Packages</span></h2>
+                    <i class="btm-ln bg-color3"></i>
+                </div>
+                <div class="serv-wrap2 position-relative text-center w-100">
+                    <div class="row align-items-center pt-5" id="custom-packages-list">
+                        <!-- Customized packages will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section>
         <div class="w-100 pt-120 grad-bg1 pb-120 position-relative">
@@ -2010,6 +2031,62 @@ sendBtn.onclick = function() {
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const customPackages = [
+            {
+                description: 'Includes <span style="font-size: 20px; font-weight: bold;">BUSINESS INSIDER</span>, <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">AP News</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
+                link: "checkout.html",
+                pricing: {
+                    "20 PR": "$249"
+                }
+            },
+            {
+                description: 'Includes <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
+                link: "checkout.html",
+                pricing: {
+                    "20 PR": "$99"
+                }
+            },
+            {
+                description: 'Includes <span style="font-size: 20px; font-weight: bold;">MSN</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">NEWSMAX</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
+                link: "checkout.html",
+                pricing: {
+                    "20 PR": "$399"
+                }
+            },
+            {
+                description: 'Includes <span style="font-size: 20px; font-weight: bold;">Asiaone</span>, <span style="font-size: 20px; font-weight: bold;">Street Insider</span>, <span style="font-size: 20px; font-weight: bold;">NEWSMAX</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
+                link: "checkout.html",
+                pricing: {
+                    "20 PR": "$129"
+                }
+            }
+        ];
+
+        const packagesList = document.getElementById('custom-packages-list');
+
+        customPackages.forEach(pkg => {
+            const packageElement = document.createElement('div');
+            packageElement.className = 'col-md-6 col-sm-6 col-lg-3 pb-5';
+            packageElement.innerHTML = `
+    <div class="post-box brd-rd15 w-100" style="display: flex; flex-direction: column; height: 310px;">
+        <div class="post-info w-100" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px;">
+            <p class="mb-3" style="font-size: 14px; height: 150px;">${pkg.description}</p>
+            <p class="mb-3" style="font-size: 20px; font-weight: bold;  ">${pkg.pricing["20 PR"]} - 20 PR</p>
+            <a class="thm-btn brd-btn rounded-pill d-inline-block" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
+        </div>
+    </div>
+`;
+
+            packagesList.appendChild(packageElement);
+        });
+    });
+</script>
+
+
+
+
 
 
 <script src="assets/js/jquery.min.js"></script>
