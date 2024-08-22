@@ -1966,7 +1966,7 @@ sendBtn.onclick = function() {
 
         packages.forEach(pkg => {
             const packageElement = document.createElement('div');
-            packageElement.className = 'col-md-6 col-sm-6 col-lg-2 pb-5';
+            packageElement.className = 'col-md-6 col-sm-6 col-lg-3 pb-5';
             packageElement.innerHTML = `
                 <div class="post-box brd-rd15 w-100">
                     <div class="post-img overflow-hidden position-relative w-100">
@@ -1974,7 +1974,8 @@ sendBtn.onclick = function() {
                     </div>
                     <div class="post-info w-100">
                         <span class="post-cate d-block text-uppercase"><a href="javascript:void(0);" title="">${pkg.visitors}</a></span>
-                        <h3 class="mb-0"><a href="${pkg.website}" title="" target="_blank">${pkg.name}</a></h3>
+                        <h4 class="mb-0"><a href="${pkg.website}" title="" target="_blank">${pkg.name}</a></h4>
+                        <span class="selected-option"> ${pkg.pricing["1 PR"]} - 1 PR</span>
                         <select class="form-select mb-3">
                             <option value="1 PR">${pkg.pricing["1 PR"]} - 1 PR</option>
                             <option value="5 PR">${pkg.pricing["5 PR"]} - 5 PR</option>
@@ -1984,11 +1985,22 @@ sendBtn.onclick = function() {
                     </div>
                 </div>
             `;
+            
+            // Append the package element to the packages list
             packagesList.appendChild(packageElement);
+
+            // Get the select element and the span where the selected option is displayed
+            const selectElement = packageElement.querySelector('.form-select');
+            const selectedOptionSpan = packageElement.querySelector('.selected-option');
+
+            // Update the displayed text when the user changes the select option
+            selectElement.addEventListener('change', function() {
+                const selectedValue = selectElement.value;
+                selectedOptionSpan.textContent = `${pkg.pricing[selectedValue]} - ${selectedValue}`;
+            });
         });
     });
 </script>
-
 
 
 <script src="assets/js/jquery.min.js"></script>
