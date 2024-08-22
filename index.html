@@ -193,9 +193,18 @@
                         </ul>
                     </nav>
                     <div class="header-btns d-inline-flex flex-wrap align-items-center">
-                        <a class="search-btn d-inline-block" href="checkout.html" title="">Order status</a>
+                        <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a>
                         <a class="thm-btn brd-btn rounded-pill d-inline-block" href="checkout.html" title="">Order Now</a>
                     </div>
+                    <div id="emailPopup" class="popup">
+                        <div class="popup-content">
+                          <span class="close">&times;</span>
+                          <h2>Order Status</h2>
+                          <p>Please fill the Order ID provided below:</p>
+                          <input type="text" id="orderIdInput" placeholder="Enter your Order ID">
+                          <button id="sendOrderId">Send</button>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div><!-- Menubar -->
@@ -302,7 +311,7 @@
                     </ul>
                 </nav>
                 <div class="header-btns d-inline-flex flex-wrap align-items-center">
-                    <a class="search-btn d-inline-block" href="javascript:void(0);" title=""><i class="flaticon-magnifying-glass"></i></a>
+                    <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a>
                     <a class="thm-btn brd-btn rounded-pill d-inline-block" href="contact.html" title="">Get a Quote</a>
                 </div>
             </div>
@@ -2110,6 +2119,44 @@
         </div>
     </div><!-- Bottom Bar -->
 </main><!-- Main Wrapper -->
+
+<script>
+// Get the elements
+var popup = document.getElementById("emailPopup");
+var link = document.getElementById("orderStatusLink");
+var closeBtn = document.getElementsByClassName("close")[0];
+var sendBtn = document.getElementById("sendEmail");
+
+// Show the popup when the link is clicked
+link.onclick = function() {
+  popup.style.display = "block";
+};
+
+// Close the popup when the close button is clicked
+closeBtn.onclick = function() {
+  popup.style.display = "none";
+};
+
+// Close the popup when clicking outside the popup content
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+};
+
+// Handle the send button click
+sendBtn.onclick = function() {
+  var email = document.getElementById("emailInput").value;
+  if (email) {
+    alert("Email sent to: " + email);
+    popup.style.display = "none";
+  } else {
+    alert("Please enter a valid email address.");
+  }
+};
+
+
+</script>
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
