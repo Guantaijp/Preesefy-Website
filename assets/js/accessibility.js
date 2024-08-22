@@ -1,9 +1,9 @@
 /*
- Highcharts JS v9.0.1 (2021-02-15)
+ Highcharts JS v9.0.1 (2024-02-15)
 
  Accessibility module
 
- (c) 2010-2021 Highsoft AS
+ (c) 2010-2024 Highsoft AS
  Author: Oystein Moseng
 
  License: www.highcharts.com/license
