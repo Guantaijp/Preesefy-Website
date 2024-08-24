@@ -5,43 +5,37 @@ document.addEventListener("DOMContentLoaded", function() {
     const uploadPRInput = document.getElementById('upload-pr');
     const featuredImageInput = document.getElementById('featured-image');
 
-    // Mapping of cryptocurrencies to wallet addresses, currencies, prices, QR code images, and code images
     const cryptoData = {
         "bitcoin": {
             wallet: "TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr",
             currency: "USDT (TRC20)",
             price: 149,
             qrCodeUrl: "/assets/images/packages/trc20.jpeg",
-            codeImageUrl: "https://link.trustwallet.com/send?asset=c195_tTR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&address=TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr" // Local code image
+            codeImageUrl: "https://link.trustwallet.com/send?asset=c195_tTR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&address=TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr"
         },
         "ethereum": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "BUSD (BEP20)",
             price: 150,
-            qrCodeUrl: "/assets/images/packages/bep20.png", // Local QR code image
-            codeImageUrl: "https://link.trustwallet.com/send?asset=c20000714_t0x55d398326f99059fF775485246999027B3197955&address=0x47668401C85151792784bA44Af23a0c2C197005E" // Local code image
+            qrCodeUrl: "/assets/images/packages/bep20.png",
+            codeImageUrl: "https://link.trustwallet.com/send?asset=c20000714_t0x55d398326f99059fF775485246999027B3197955&address=0x47668401C85151792784bA44Af23a0c2C197005E"
         },
         "litecoin": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "USDT (ERC20)",
             price: 155,
-            qrCodeUrl: "/assets/images/packages/erc20.png", // Local QR code image
-            codeImageUrl: "https://link.trustwallet.com/send?address=0x47668401C85151792784bA44Af23a0c2C197005E&asset=c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7" // Local code image
+            qrCodeUrl: "/assets/images/packages/erc20.png",
+            codeImageUrl: "https://link.trustwallet.com/send?address=0x47668401C85151792784bA44Af23a0c2C197005E&asset=c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7"
         }
-        // Add more mappings as needed
     };
 
-    // Function to update the total price based on the selected cryptocurrency
     function updatePrice() {
         const selectedCrypto = cryptoSelect.value;
         const data = cryptoData[selectedCrypto] || {};
         totalPriceElement.textContent = `$ ${data.price || '0'}`;
     }
 
-    // Save data to local storage when "Place Order" button is clicked
-    placeOrderButton.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default link action
-
+    placeOrderButton.addEventListener('click', function() {
         const selectedCrypto = cryptoSelect.value;
         const data = cryptoData[selectedCrypto] || {};
         const orderData = {
@@ -58,15 +52,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         localStorage.setItem('orderData', JSON.stringify(orderData));
 
-        // Redirect to the payment page
+        // Redirect to the payment page after saving data
         window.location.href = 'payment.html';
     });
 
-    // Update price when cryptocurrency is selected
     cryptoSelect.addEventListener('change', updatePrice);
-
-    // Initial price update
-    updatePrice();
+    updatePrice(); // Initial price update
 });
 
 
@@ -79,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('currency').textContent = orderData.currency || 'Not available';
         document.querySelector('.total-price').textContent = `$ ${orderData.totalPrice || '0'}`;
         document.getElementById('qr-code').src = orderData.qrCodeUrl || '';
-        document.getElementById('code-image').src = orderData.codeImageUrl || '';
+        document.getElementById('qr-code-link').href = orderData.qrCodeUrl || ''; // Added this line
         document.getElementById('upload-pr').textContent = orderData.uploadPR || 'No file chosen';
         document.getElementById('featured-image').textContent = orderData.featuredImage || 'No file chosen';
     } else {
