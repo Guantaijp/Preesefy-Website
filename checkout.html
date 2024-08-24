@@ -22,6 +22,66 @@
 </head>
 <body>
 <main>
+    <style>
+.order-form-wrap {
+    margin-top: 60px;
+    width: 100%;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.total-price {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.thm-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.thm-btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
     <header class="style1 w-100">
         <div class="topbar bg-color4 w-100">
             <div class="container">
@@ -697,39 +757,52 @@
                             </div> -->
                         </div>
                     </form>
-                    <div class="review-order">
-                        <!-- The content will be dynamically inserted by the JavaScript code -->
+                  
+                    
+                   
+                    <div class="order-form-wrap mt-60 w-100">
+                        <h4>Your Order</h4>
+                        <form action="checkout.html" method="post" class="order-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Payment</label>
+                                    <input type="text" id="name" name="name" value="Samiranmondal" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" value="Newscoverage.agency@gmail.com" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="upload-pr">Upload PR</label>
+                                    <input type="file" id="upload-pr" name="upload-pr" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="featured-image">Featured Image</label>
+                                    <input type="file" id="featured-image" name="featured-image" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="crypto-payment">Select Cryptocurrency Payment</label>
+                                    <select id="crypto-payment" name="crypto-payment">
+                                        <option value="bitcoin">TRC20- Network</option>
+                                        <option value="ethereum">BEP20- Network</option>
+                                        <option value="litecoin">ERC20- Network</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="total-price" style="font-size: 20px; font-weight: bold;"></div>
+                            <button class="thm-btn rounded-pill d-inline-block" type="submit">Place Order</button>
+                        </form>
                     </div>
                     
-                    <div class="total-price" style="font-size: 20px; font-weight: bold;"></div>
-
-
                     
-                    <div class="review-confirmation mt-40">
-                        <button class="btn btn-primary confirm-order">Confirm Order</button>
-                    </div>
-                    <div class="order-table-wrap mt-60 w-100">
-                        <h4>Your order</h4>
-                        <table class="order-table w-100">
-                            <thead>
-                            <tr><th>Product</th><th>Total</th></tr>
-                            </thead>
-                            <tbody>
-                            <tr class="cart_item"><td class="product-name">Best SEO Tutorial <strong class="product-quantity">× 1</strong></td><td class="product-total"><span class="price d-inline-block">$23.00</span></td></tr>
-                            <tr class="cart_item"><td class="product-name">Business SEO <strong class="product-quantity">× 1</strong></td><td class="product-total"><span class="price d-inline-block">$15.00</span></td></tr>
-                            <tr class="cart_item"><td class="product-name">Secrets Business <strong class="product-quantity">× 1</strong></td><td class="product-total"><span class="price d-inline-block">$14.00</span></td></tr>
-                            </tbody>
-                            <tfoot>
-                            <tr><th>Subtotal</th><td><span class="price d-inline-block">$52</span></td></tr>
-                            <tr><th>Shipping</th><td>Enter your address to view shipping options.</td></tr>
-                            <tr><th>Total</th><td><strong><span class="price d-inline-block">$52</span></strong></td></tr>
-                            </tfoot>
-                        </table>
-                        <!-- <div class="payment-info w-100">
-                            <p class="mb-0">Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.</p>
-                        </div> -->
-                        <button class="thm-btn rounded-pill d-inline-block" type="submit">Place Order</button>
-                    </div>
                 </div><!-- Checkout Wrap -->
             </div>
         </div>
