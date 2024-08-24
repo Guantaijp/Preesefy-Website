@@ -479,7 +479,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <h4>Billing Details</h4>
                                 <div class="toggle w-100" id="toggle2"> 
-                                    <div class="toggle-item position-relative w-100">
+                                    <!-- <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Express Checkout</h4>
                                         <div class="row toggle-content w-100">
                                             <div class="col-md-6">
@@ -498,79 +498,81 @@
                                                 <a class="btn btn-outline-primary rounded-pill mt-3 d-inline-block" href="" title="Order Now">Next</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="toggle-item position-relative w-100">
-                                        <h4 class="mb-0 position-relative"><i></i>Publishing Package</h4>
-                                        <div class="toggle-content w-100">
-                                            <p>Pick where to publish your news story. Use the Popular Package for general topics, Alternative Package for complex topics like crypto or CBD, Authority Package for SEO, or Ultimate Package for best results. </p>
+                                    </div> -->
+                                   <!-- Publishing Package Section -->
+<div class="toggle-item position-relative w-100">
+    <h4 class="mb-0 position-relative"><i></i>Publishing Package</h4>
+    <div class="toggle-content selectedPublishingPackage publishing-package  w-100">
+        <p>You selected:</p>
+        <!-- The content will be dynamically inserted by the JavaScript code -->
+    </div>
+</div>
+
+<!-- Writing Package Section -->
+<div class="toggle-item position-relative w-100">
+    <h4 class="mb-0 position-relative"><i></i>Writing Package</h4>
+    <div class="toggle-content w-100">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <p>Write your own news story or pick a package to let our skilled human writers craft the perfect story for you.</p>
+            </div>
+        
+            <div class="col-12 col-md-6 mb-4">
+                <div class="border p-3 rounded">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="writingPackage" id="writeYourOwn" value="writeYourOwn">
+                        <label class="form-check-label" for="writeYourOwn">
+                            <strong>Write Your Own Story</strong><br>
+                            Upload your news story & we'll publish it on major news sites<br>
+                            <strong>Free</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-12 col-md-6 mb-4">
+                <div class="border p-3 rounded">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="writingPackage" id="shortNewsStory" value="shortNewsStory">
+                        <label class="form-check-label" for="shortNewsStory">
+                            <strong>Short News Story</strong><br>
+                            350 word news story, written and SEO optimized, with 2 revisions included<br>
+                            <strong>$40</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-12 col-md-6 mb-4">
+                <div class="border p-3 rounded">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="writingPackage" id="regularNewsStory" value="regularNewsStory">
+                        <label class="form-check-label" for="regularNewsStory">
+                            <strong>Regular News Story</strong><br>
+                            500 word news story, written and SEO optimized, with 3 revisions included<br>
+                            <strong>$60</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-12 col-md-6 mb-4">
+                <div class="border p-3 rounded">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="writingPackage" id="longNewsStory" value="longNewsStory">
+                        <label class="form-check-label" for="longNewsStory">
+                            <strong>Long News Story</strong><br>
+                            700+ word news story, written and SEO optimized, with unlimited revisions included<br>
+                            <strong>$80</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                                     
-                                            <a class="thm-btn brd-btn rounded-pill d-inline-block mt-10 " href="checkout.html" title="">Order Now</a>
-                
-                                        </div>
-                                    </div>
-                                    <div class="toggle-item position-relative w-100">
-                                        <h4 class="mb-0 position-relative"><i></i>Writing Package</h4>
-                                        <div class="toggle-content w-100">
-                                            <div class="row">
-                                                <div class="col-12 mb-4">
-                                                    <p>Write your own news story or pick a package to let our skilled human writers craft the perfect story for you.</p>
-                                                </div>
-                                            
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="border p-3 rounded">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="writingPackage" id="writeYourOwn" value="writeYourOwn">
-                                                            <label class="form-check-label" for="writeYourOwn">
-                                                                <strong>Write Your Own Story</strong><br>
-                                                                Upload your news story & we'll publish it on major news sites<br>
-                                                                <strong>Free</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="border p-3 rounded">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="writingPackage" id="shortNewsStory" value="shortNewsStory">
-                                                            <label class="form-check-label" for="shortNewsStory">
-                                                                <strong>Short News Story</strong><br>
-                                                                350 word news story, written and SEO optimized, with 2 revisions included<br>
-                                                                <strong>$40</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="border p-3 rounded">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="writingPackage" id="regularNewsStory" value="regularNewsStory">
-                                                            <label class="form-check-label" for="regularNewsStory">
-                                                                <strong>Regular News Story</strong><br>
-                                                                500 word news story, written and SEO optimized, with 3 revisions included<br>
-                                                                <strong>$60</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="border p-3 rounded">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="writingPackage" id="longNewsStory" value="longNewsStory">
-                                                            <label class="form-check-label" for="longNewsStory">
-                                                                <strong>Long News Story</strong><br>
-                                                                700+ word news story, written and SEO optimized, with unlimited revisions included<br>
-                                                                <strong>$80</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Brand Details</h4>
                                         <div class="toggle-content w-100">
@@ -621,10 +623,10 @@
                                                     <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
-                                    <div class="toggle-item position-relative w-100">
+                                    
+                                    <!-- <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>News Story (Optional) </h4>
                                         <div class="toggle-content w-100">
                                             <p>Pick where to publish your news story. Use the Popular Package for general topics, Alternative Package for complex topics like crypto or CBD, Authority Package for SEO, or Ultimate Package for best results. </p>
@@ -632,7 +634,7 @@
                                             <a class="thm-btn brd-btn rounded-pill d-inline-block mt-10 " href="checkout.html" title="">Order Now</a>
                 
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 
@@ -694,6 +696,16 @@
                             </div> -->
                         </div>
                     </form>
+                    <div class="review-order">
+                        <!-- The content will be dynamically inserted by the JavaScript code -->
+                    </div>
+                    
+                    <div class="total-price"></div>
+
+                    
+                    <div class="review-confirmation mt-40">
+                        <button class="btn btn-primary confirm-order">Confirm Order</button>
+                    </div>
                     <div class="order-table-wrap mt-60 w-100">
                         <h4>Your order</h4>
                         <table class="order-table w-100">
@@ -711,9 +723,9 @@
                             <tr><th>Total</th><td><strong><span class="price d-inline-block">$52</span></strong></td></tr>
                             </tfoot>
                         </table>
-                        <div class="payment-info w-100">
+                        <!-- <div class="payment-info w-100">
                             <p class="mb-0">Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.</p>
-                        </div>
+                        </div> -->
                         <button class="thm-btn rounded-pill d-inline-block" type="submit">Place Order</button>
                     </div>
                 </div><!-- Checkout Wrap -->
@@ -820,6 +832,8 @@
     
     
     </script>
+
+<script src="assets/js/checkout.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
