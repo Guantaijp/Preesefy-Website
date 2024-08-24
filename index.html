@@ -2073,13 +2073,31 @@ sendBtn.onclick = function() {
     <div class="post-box brd-rd15 w-100" style="display: flex; flex-direction: column; height: 310px;">
         <div class="post-info w-100" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px;">
             <p class="mb-3" style="font-size: 14px; height: 150px;">${pkg.description}</p>
-            <p class="mb-3" style="font-size: 20px; font-weight: bold;  ">${pkg.pricing["20 PR"]} - 20 PR</p>
-            <a class="thm-btn brd-btn rounded-pill d-inline-block" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
+            <p class="mb-3" style="font-size: 20px; font-weight: bold;  " data-price="${pkg.pricing["20 PR"]}">${pkg.pricing["20 PR"]} - 20 PR</p>
+            <a class="thm-btn brd-btn rounded-pill d-inline-block order-now-btn" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
         </div>
     </div>
 `;
 
             packagesList.appendChild(packageElement);
+        });
+
+        // Add event listener to handle 'Order Now' clicks
+        packagesList.addEventListener('click', function(e) {
+            if (e.target.classList.contains('order-now-btn')) {
+                const packageElement = e.target.closest('.post-box');
+                const priceText = packageElement.querySelector('p[data-price]').getAttribute('data-price');
+                const price = parseFloat(priceText.replace(/[^0-9.-]+/g, "")); // Convert to number
+
+                const selectedPackage = {
+                    description: packageElement.querySelector('p').innerHTML,
+                    link: e.target.href,
+                    pricing: price
+                };
+
+                localStorage.setItem('selectedPackage', JSON.stringify(selectedPackage));
+                window.location.href = e.target.href;
+            }
         });
     });
 </script>
