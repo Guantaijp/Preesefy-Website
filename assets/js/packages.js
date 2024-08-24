@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const selectedPackage = {
                 name: pkg.name,
                 visitors: pkg.visitors,
-                pricing: pkg.pricing[selectedValue],
+                pricing: pkg.pricing[selectedValue], // Store as number
                 imgSrc: pkg.imgSrc,
                 description: pkg.description
             };
