@@ -27,8 +27,112 @@ document.addEventListener("DOMContentLoaded", function() {
             link: "checkout.html",
             description: "Feature your press release on THEGLOBEANDMAIL.COM, Canada’s most trusted newspaper, and connect with 14.79 million readers to elevate your brand in the Canadian market."
         },
-        // Add other packages here...
+        {
+            name: "BUSINESSINSIDER.COM",
+            visitors: "101.5M Visitors",
+            imgSrc: "assets/images/packages/insider.jpeg",
+            pricing: {
+                "1 PR": 180,
+                "5 PR": 800,
+                "10 PR": 1400
+            },
+            website: "https://www.businessinsider.com",
+            link: "checkout.html",
+            description: "Promote your press release on BUSINESSINSIDER.COM, a go-to source for business and financial news, reaching 101.5 million professionals and decision-makers."
+        },
+        {
+            name: "BENZINGA.COM",
+            visitors: "31.02M Visitors",
+            imgSrc: "assets/images/packages/benzinga.jpeg",
+            pricing: {
+                "1 PR": 55,
+                "5 PR": 250,
+                "10 PR": 450
+            },
+            website: "https://www.benzinga.com",
+            link: "checkout.html",
+            description: "Boost your presence in the financial industry by publishing your press release on BENZINGA.COM, known for its financial news and analysis, and engage with 31.02 million investors and traders."
+        },
+        {
+            name: "APNEWS.COM",
+            visitors: "355.6M Visitors",
+            imgSrc: "assets/images/packages/ap.jpeg",
+            pricing: {
+                "1 PR": 90,
+                "5 PR": 400,
+                "10 PR": 700
+            },
+            website: "https://www.apnews.com",
+            link: "checkout.html",
+            description: "Maximize your global reach by publishing your press release on APNEWS.COM, the world's most reliable news source, reaching 355.6 million visitors across the globe."
+        },
+        {
+            name: "DIGITALJOURNAL.COM",
+            visitors: "561,900 Visitors",
+            imgSrc: "assets/images/packages/digital.jpeg",
+            pricing: {
+                "1 PR": 50,
+                "5 PR": 225,
+                "10 PR": 400
+            },
+            website: "https://www.digitaljournal.com",
+            link: "checkout.html",
+            description: "Publish your press release on DIGITALJOURNAL.COM, a leader in digital news, and connect with 561,900 tech-savvy readers looking for the latest trends."
+        },
+        {
+            name: "NEWSMAX.COM",
+            visitors: "91.96M Visitors",
+            imgSrc: "assets/images/packages/newsmax.jpeg",
+            pricing: {
+                "1 PR": 40,
+                "5 PR": 175,
+                "10 PR": 300
+            },
+            website: "https://www.newsmax.com",
+            link: "checkout.html",
+            description: "Feature your press release on NEWSMAX.COM, a leading conservative news outlet, and tap into a massive audience of 91.96 million engaged readers."
+        },
+        {
+            name: "BARCHART.COM",
+            visitors: "7.359M Visitors",
+            imgSrc: "assets/images/packages/barchart.jpeg",
+            pricing: {
+                "1 PR": 90,
+                "5 PR": 425,
+                "10 PR": 800
+            },
+            website: "https://www.barchart.com",
+            link: "checkout.html",
+            description: "Enhance your visibility in the financial sector by publishing your press release on BARCHART.COM, a trusted source for market data, reaching 7.359 million investors."
+        },
+        {
+            name: "ASIAONE.COM",
+            visitors: "5.643M Visitors",
+            imgSrc: "assets/images/packages/asiaone.jpeg",
+            pricing: {
+                "1 PR": 55,
+                "5 PR": 250,
+                "10 PR": 450
+            },
+            website: "https://www.asiaone.com",
+            link: "checkout.html",
+            description: "Increase your brand's reach in Asia by publishing your press release on ASIAONE.COM, a leading news portal in the region, connecting with 5.643 million readers."
+        },
+        {
+            name: "STREETINSIDER.COM",
+            visitors: "571,073 Visitors",
+            imgSrc: "assets/images/packages/street.jpeg",
+            pricing: {
+                "1 PR": 45,
+                "5 PR": 200,
+                "10 PR": 350
+            },
+            website: "https://www.streetinsider.com",
+            link: "checkout.html",
+            description: "Get your press release on STREETINSIDER.COM, a key resource for breaking financial news, and connect with 571,073 market-focused readers for targeted exposure."
+        }
     ];
+    
 
     const packagesList = document.getElementById('packages-list');
 
