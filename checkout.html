@@ -762,7 +762,7 @@
                    
                     <div class="order-form-wrap mt-60 w-100">
                         <h4>Your Order</h4>
-                        <form action="checkout.html" method="post" class="order-form">
+                        <formmethod="post" class="order-form">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Payment</label>
@@ -789,21 +789,22 @@
                                 <div class="form-group">
                                     <label for="crypto-payment">Select Cryptocurrency Payment</label>
                                     <select id="crypto-payment" name="crypto-payment">
-                                        <option value="bitcoin">TRC20- Network</option>
-                                        <option value="ethereum">BEP20- Network</option>
-                                        <option value="litecoin">ERC20- Network</option>
+                                        <option value="bitcoin">(USDT)TRC20</option>
+                                        <option value="ethereum">BUSD (BEP20)</option>
+                                        <option value="litecoin">(USDT)ERC20</option>
                                         <!-- Add more options as needed -->
                                     </select>
                                 </div>
                             </div>
                             
                             <div class="total-price" style="font-size: 20px; font-weight: bold;"></div>
-                            <button class="thm-btn rounded-pill d-inline-block" type="submit">Place Order</button>
-                        </form>
-                    </div>
+                            
+                        </formmethod=>
+                        
+                        <a id="place-order" class="thm-btn rounded-pill d-inline-block" href="payment.html" title="">Place Order</a>
                     
                     
-                </div><!-- Checkout Wrap -->
+                </div>
             </div>
         </div>
     </section>
@@ -907,7 +908,7 @@
     
     
     </script>
-
+<script src="assets/js/payment.js"></script>
 <script src="assets/js/checkout.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
