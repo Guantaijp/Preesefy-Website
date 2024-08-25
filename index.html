@@ -2034,35 +2034,35 @@ sendBtn.onclick = function() {
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const customPackages = [
-            {
-                description: 'Includes <span style="font-size: 20px; font-weight: bold;">BUSINESS INSIDER</span>, <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">AP News</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
-                link: "checkout.html",
-                pricing: {
-                    "20 PR": "$249"
-                }
-            },
-            {
-                description: 'Includes <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
-                link: "checkout.html",
-                pricing: {
-                    "20 PR": "$99"
-                }
-            },
-            {
-                description: 'Includes <span style="font-size: 20px; font-weight: bold;">MSN</span>, <span style="font-size: 20px; font-weight: bold;">DIGITAL JOURNAL</span>, <span style="font-size: 20px; font-weight: bold;">BENZINGA</span>, <span style="font-size: 20px; font-weight: bold;">NEWSMAX</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
-                link: "checkout.html",
-                pricing: {
-                    "20 PR": "$399"
-                }
-            },
-            {
-                description: 'Includes <span style="font-size: 20px; font-weight: bold;">Asiaone</span>, <span style="font-size: 20px; font-weight: bold;">Street Insider</span>, <span style="font-size: 20px; font-weight: bold;">NEWSMAX</span>, and <span style="font-size: 20px; font-weight: bold;">300 General media</span>.',
-                link: "checkout.html",
-                pricing: {
-                    "20 PR": "$129"
-                }
-            }
-        ];
+    {
+        description: 'Includes BUSINESS INSIDER, BENZINGA, AP News, DIGITAL JOURNAL, and 300 General media.',
+        link: "checkout.html",
+        pricing: {
+            "20 PR": "$249"
+        }
+    },
+    {
+        description: 'Includes BENZINGA, DIGITAL JOURNAL, and 300 General media.',
+        link: "checkout.html",
+        pricing: {
+            "20 PR": "$99"
+        }
+    },
+    {
+        description: 'Includes MSN, DIGITAL JOURNAL, BENZINGA, NEWSMAX, and 300 General media.',
+        link: "checkout.html",
+        pricing: {
+            "20 PR": "$399"
+        }
+    },
+    {
+        description: 'Includes Asiaone, Street Insider, NEWSMAX, and 300 General media.',
+        link: "checkout.html",
+        pricing: {
+            "20 PR": "$129"
+        }
+    }
+];
 
         const packagesList = document.getElementById('custom-packages-list');
 
@@ -2070,9 +2070,9 @@ sendBtn.onclick = function() {
             const packageElement = document.createElement('div');
             packageElement.className = 'col-md-6 col-sm-6 col-lg-3 pb-5';
             packageElement.innerHTML = `
-    <div class="post-box brd-rd15 w-100" style="display: flex; flex-direction: column; height: 310px;">
+    <div class="post-box brd-rd15 w-100" style="display: flex; flex-direction: column; height: 280px;">
         <div class="post-info w-100" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px;">
-            <p class="mb-3" style="font-size: 14px; height: 150px;">${pkg.description}</p>
+            <p class="mb-3" style="font-size: 14px; height: 100px;">${pkg.description}</p>
             <p class="mb-3" style="font-size: 20px; font-weight: bold;  " data-price="${pkg.pricing["20 PR"]}">${pkg.pricing["20 PR"]} - 20 PR</p>
             <a class="thm-btn brd-btn rounded-pill d-inline-block order-now-btn" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
         </div>

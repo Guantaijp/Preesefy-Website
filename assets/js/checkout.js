@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (publishingPackageContent) {
             publishingPackageContent.innerHTML = `
                 <div class="package-details">
-                    <h5>${selectedPublishingPackage.name}</h5>
+                   ${selectedPublishingPackage.name ? `<h5>${selectedPublishingPackage.name}</h5>` : ''}
                     <p>${selectedPublishingPackage.description}</p>
                     <strong>Price:$ ${selectedPublishingPackage.pricing}</strong>
                 </div>
