@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="package-details">
                     <h5>${selectedPublishingPackage.name}</h5>
                     <p>${selectedPublishingPackage.description}</p>
-                    <strong>Price: ${selectedPublishingPackage.pricing}</strong>
+                    <strong>Price:$ ${selectedPublishingPackage.pricing}</strong>
                 </div>
             `;
         }
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update the total price display
         const totalPriceDiv = document.querySelector('.total-price');
         if (totalPriceDiv) {
-            totalPriceDiv.innerText = `Total Price: ${finalTotalPrice.toFixed(2)}`;
+            totalPriceDiv.innerText = `Total Price: $${finalTotalPrice.toFixed(2)}`;
         } else {
             console.error("Total price container not found.");
         }

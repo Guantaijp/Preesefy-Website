@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
+
+   
+
     function updatePrice() {
         const selectedCrypto = cryptoSelect.value;
         const data = cryptoData[selectedCrypto] || {};
@@ -68,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Display stored data
         document.getElementById('wallet-address').textContent = orderData.walletAddress || 'Not available';
         document.getElementById('currency').textContent = orderData.currency || 'Not available';
-        document.querySelector('.total-price').textContent = `$ ${orderData.totalPrice || '0'}`;
+        document.querySelector('.total-price').textContent = ` $ ${orderData.totalPrice || '0'}`;
         document.getElementById('qr-code').src = orderData.qrCodeUrl || '';
         document.getElementById('qr-code-link').href = orderData.qrCodeUrl || ''; // Added this line
         document.getElementById('upload-pr').textContent = orderData.uploadPR || 'No file chosen';

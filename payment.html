@@ -23,72 +23,146 @@
 <body>
 <main>
     <style>
-.payment-page-wrap {
-    max-width: 1800px;
-    margin: 20px auto;
+.payment-details {
+    background-color: #f8f9fa; /* Light grey background for contrast */
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+    font-family: 'Arial', sans-serif;
 }
 
-h4 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.payment-details, .order-details {
-    margin-bottom: 20px;
-}
-
-.payment-row, .form-group {
+.payment-details h4 {
+    font-size: 1.5rem;
     margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
 }
 
-.payment-row label, .form-group label {
-    display: block;
+.payment-details p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.payment-details span {
     font-weight: bold;
+    color: #222;
+}
+
+#qr-code-link {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#qr-code {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+#qr-code:hover {
+    transform: scale(1.05);
+}
+
+.payment-details label {
+    font-weight: 600;
+    color: #333;
     margin-bottom: 5px;
+    display: block;
 }
 
-.payment-row input, .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.order-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.order-table th, .order-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.order-table th {
-    background-color: #f5f5f5;
+#upload-pr, #featured-image {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 5px;
 }
 
 .thm-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
+    background-color: #007bff; /* Primary blue color */
+    color: #fff;
     border: none;
-    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    margin-top: 20px;
 }
 
 .thm-btn:hover {
     background-color: #0056b3;
 }
+
+.thm-btn:active {
+    background-color: #003f7f;
+}
+
+.rounded-pill {
+    border-radius: 50px;
+}
+.wallet-container {
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px;
+    max-width: 800px;
+    margin: 10px 0; /* Space around the container */
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.wallet-container p {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the wallet address and the button */
+    margin: 0; /* Remove default margin */
+}
+
+#wallet-address {
+    flex-grow: 1; /* Allows the address to take up available space */
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    padding: 0;
+}
+
+.copy-btn img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.copy-btn img:hover {
+    transform: scale(1.2);
+}
+
+
+div input[type="file"] {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    width: 100%;
+}
+
+div input[type="file"]:hover {
+    border-color: #007bff; /* Blue border on hover */
+}
+
 
     </style>
     <header class="style1 w-100">
@@ -125,7 +199,7 @@ h4 {
                                             <a href="shop-detail.html" title=""><img class="img-fluid" src="assets/images/resources/shop-img2.jpg" alt="Cart Image 2"></a>
                                             <div class="minicart-info">
                                                 <h6 class="mb-0"><a href="shop-detail.html" title="">Seo Fitness Workbook</a></h6>
-                                                <span class="price">$231.00</span>
+                                                <span class="price"></span>
                                                 <a class="remove-cart" href="javascript:void(0);" title=""><i class="flaticon-delete"></i></a>
                                             </div>
                                         </div>
@@ -527,11 +601,10 @@ h4 {
                 <img data-depth="0.80" class="pg-ttl-shp-img img-fluid position-absolute" src="assets/images/ttl-bg-shp.png" alt="Title Background Shape" height="329" width="1920">
                 <div class="container">
                     <div class="pg-title-inner text-center position-relative w-100">
-                        <h1>Checkout <i class="btm-ln v2 bg-color9"></i></h1>
+                        <h1>Payments <i class="btm-ln v2 bg-color9"></i></h1>
                         <ol class="breadcrumb d-inline-flex justify-content-center align-items-center flex-wrap">
                             <li class="breadcrumb-item"><a href="" title="Home">Home</a></li>
                             <li class="breadcrumb-item"><a href="" title="">Order Now</a></li>
-                            <li class="breadcrumb-item"><a href="" title="">Review</a></li>
                             <li class="breadcrumb-item active">Payment</li>
                         </ol>
                     </div>
@@ -544,28 +617,37 @@ h4 {
             <div class="container">
                 <div class="payment-details">
                     <h4>Payment Details</h4>
-                    <p>Wallet Address: <span id="wallet-address"></span></p>
+                    <div class="wallet-container">
+                        <p>
+                            Wallet Address: 
+                            <span id="wallet-address">0x1234abcd...ef5678</span>
+                            <button id="copy-wallet-address" class="copy-btn" onclick="copyToClipboard()">
+                                <img src="/assets/images/preeseefyimages/copyicon.png" alt="Copy" title="Copy Wallet Address" />
+                            </button>
+                        </p>
+                    </div>
+                    
                     <p>Currency: <span id="currency"></span></p>
-                    <p>Total: <span class="total-price"></span></p>
-                    <p>QR Code:</p>
+                    <p><span class="total-price"></span></p>
+                    <p>QR Code Scan to pay:</p>
                     <a id="qr-code-link" href="" target="_blank">
-                        <img id="qr-code" src="" alt="QR Code" style="width: 200px; height: 200px;" />
+                        <img id="qr-code" src="/assets/images/preeseefyimages/copyicon.png" alt="QR Code" style="width: 200px; height: 200px;" />
                     </a>
                     <div>
                         <label for="upload-pr">Upload Payment Screenshot</label>
-                        <p id="upload-pr">No file chosen</p>
+                        <input type="file" id="upload-pr" name="payment-screenshot" accept="image/*" />
                     </div>
                     
-                    <div>
+                    <!-- <div>
                         <label for="featured-image">Featured Image</label>
                         <p id="featured-image">No file chosen</p>
-                    </div>
+                    </div> -->
                     
                     <button class="thm-btn rounded-pill d-inline-block" type="submit">Confirm Payment</button>
                 </div>
                 
                 
-                <div class="payment-page-wrap">
+                <!-- <div class="payment-page-wrap">
                     <h4>Cryptocurrency Payment Details</h4>
                     <div class="payment-details">
                         <div class="payment-row">
@@ -582,7 +664,7 @@ h4 {
                         </div>
                         <div class="payment-row">
                             <label>Scan to Pay</label>
-                            <!-- Include a QR code image or similar here -->
+                           Include a QR code image or similar here 
                             <img src="path/to/qr-code.png" alt="QR Code" style="width: 150px; height: 150px;" />
                         </div>
                     </div>
@@ -616,7 +698,7 @@ h4 {
                         </div>
                         <button class="thm-btn rounded-pill" type="submit">Confirm Payment</button>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -684,6 +766,16 @@ h4 {
     </div><!-- Bottom Bar -->
 </main><!-- Main Wrapper -->
 <script>
+
+function copyToClipboard() {
+        const walletAddress = document.getElementById('wallet-address').textContent;
+        navigator.clipboard.writeText(walletAddress).then(() => {
+            alert('Wallet address copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
     // Get the elements
     var popup = document.getElementById("emailPopup");
     var link = document.getElementById("orderStatusLink");
