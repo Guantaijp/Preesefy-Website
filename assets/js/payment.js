@@ -39,8 +39,20 @@ document.addEventListener("DOMContentLoaded", function() {
         currencyElement.textContent = data.currency || 'Not available';
         totalPriceElement.textContent = `Total Price: $${orderData.totalPrice || '0.00'}`;
 
-        // Update QR Code image and link
-        qrCodeElement.src = data.qrCodeUrl || '';
+        // Ensure image URL is set correctly
+       // Ensure image URL is set correctly
+if (data.qrCodeUrl) {
+    qrCodeElement.src = data.qrCodeUrl;
+    qrCodeElement.onload = function() {
+        console.log("QR code image loaded successfully.");
+    };
+    qrCodeElement.onerror = function() {
+        console.error("Error loading QR code image.");
+        qrCodeElement.src = '/assets/images/preeseefyimages/copyicon.png'; // Fallback image
+    };
+}
+
+
         qrCodeLinkElement.href = data.codeImageUrl || '#';
 
         // Display upload PR file if available
@@ -53,3 +65,4 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("No order data found.");
     }
 });
+
