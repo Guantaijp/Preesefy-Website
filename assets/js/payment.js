@@ -1,83 +1,55 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const cryptoSelect = document.getElementById('crypto-payment');
+    const walletAddressElement = document.getElementById('wallet-address');
+    const currencyElement = document.getElementById('currency');
     const totalPriceElement = document.querySelector('.total-price');
-    const placeOrderButton = document.getElementById('place-order');
+    const qrCodeElement = document.getElementById('qr-code');
+    const qrCodeLinkElement = document.getElementById('qr-code-link');
     const uploadPRInput = document.getElementById('upload-pr');
-    const featuredImageInput = document.getElementById('featured-image');
 
+    // Cryptocurrency data
     const cryptoData = {
         "bitcoin": {
             wallet: "TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr",
             currency: "USDT (TRC20)",
-            price: 149,
             qrCodeUrl: "/assets/images/packages/trc20.jpeg",
             codeImageUrl: "https://link.trustwallet.com/send?asset=c195_tTR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&address=TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr"
         },
         "ethereum": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "BUSD (BEP20)",
-            price: 150,
             qrCodeUrl: "/assets/images/packages/bep20.png",
             codeImageUrl: "https://link.trustwallet.com/send?asset=c20000714_t0x55d398326f99059fF775485246999027B3197955&address=0x47668401C85151792784bA44Af23a0c2C197005E"
         },
         "litecoin": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "USDT (ERC20)",
-            price: 155,
             qrCodeUrl: "/assets/images/packages/erc20.png",
             codeImageUrl: "https://link.trustwallet.com/send?address=0x47668401C85151792784bA44Af23a0c2C197005E&asset=c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7"
         }
     };
 
-
-   
-
-    function updatePrice() {
-        const selectedCrypto = cryptoSelect.value;
-        const data = cryptoData[selectedCrypto] || {};
-        totalPriceElement.textContent = `$ ${data.price || '0'}`;
-    }
-
-    placeOrderButton.addEventListener('click', function() {
-        const selectedCrypto = cryptoSelect.value;
-        const data = cryptoData[selectedCrypto] || {};
-        const orderData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            walletAddress: data.wallet,
-            currency: data.currency,
-            totalPrice: data.price,
-            qrCodeUrl: data.qrCodeUrl,
-            codeImageUrl: data.codeImageUrl,
-            uploadPR: uploadPRInput.files[0] ? uploadPRInput.files[0].name : '',
-            featuredImage: featuredImageInput.files[0] ? featuredImageInput.files[0].name : ''
-        };
-
-        localStorage.setItem('orderData', JSON.stringify(orderData));
-
-        // Redirect to the payment page after saving data
-        window.location.href = 'payment.html';
-    });
-
-    cryptoSelect.addEventListener('change', updatePrice);
-    updatePrice(); // Initial price update
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
+    // Retrieve order data from localStorage
     const orderData = JSON.parse(localStorage.getItem('orderData'));
 
     if (orderData) {
-        // Display stored data
-        document.getElementById('wallet-address').textContent = orderData.walletAddress || 'Not available';
-        document.getElementById('currency').textContent = orderData.currency || 'Not available';
-        document.querySelector('.total-price').textContent = ` $ ${orderData.totalPrice || '0'}`;
-        document.getElementById('qr-code').src = orderData.qrCodeUrl || '';
-        document.getElementById('qr-code-link').href = orderData.qrCodeUrl || ''; // Added this line
-        document.getElementById('upload-pr').textContent = orderData.uploadPR || 'No file chosen';
-        document.getElementById('featured-image').textContent = orderData.featuredImage || 'No file chosen';
+        const selectedCrypto = orderData.cryptocurrency;
+        const data = cryptoData[selectedCrypto] || {};
+
+        walletAddressElement.textContent = data.wallet || 'Not available';
+        currencyElement.textContent = data.currency || 'Not available';
+        totalPriceElement.textContent = `Total Price: $${orderData.totalPrice || '0.00'}`;
+
+        // Update QR Code image and link
+        qrCodeElement.src = data.qrCodeUrl || '';
+        qrCodeLinkElement.href = data.codeImageUrl || '#';
+
+        // Display upload PR file if available
+        if (orderData.uploadPR) {
+            uploadPRInput.value = orderData.uploadPR; // This will not set a file, only show file name
+        } else {
+            uploadPRInput.value = ''; // Ensure no file is selected
+        }
     } else {
-        // Handle case when no order data is available
-        console.log('No order data found in local storage.');
+        console.error("No order data found.");
     }
 });
