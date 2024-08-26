@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "THEGLOBEANDMAIL.COM",
             visitors: "14.79M Visitors",
-            imgSrc: "assets/images/packages/globe.jpeg",
+            imgSrc: "assets/images/packages/globe2.jpeg",
             pricing: {
                 "1 PR": 100,
                 "5 PR": 450,
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "BENZINGA.COM",
             visitors: "31.02M Visitors",
-            imgSrc: "assets/images/packages/benzinga.jpeg",
+            imgSrc: "assets/images/packages/benzinga2.jpeg",
             pricing: {
                 "1 PR": 55,
                 "5 PR": 250,
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "BARCHART.COM",
             visitors: "7.359M Visitors",
-            imgSrc: "assets/images/packages/barchart.jpeg",
+            imgSrc: "assets/images/packages/barchart2.jpeg",
             pricing: {
                 "1 PR": 90,
                 "5 PR": 425,
