@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
         "ethereum": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "BUSD (BEP20)",
-            qrCodeUrl: "/assets/images/packages/bep20.png",
+            qrCodeUrl: "/assets/images/packages/bep20.jpeg",
             codeImageUrl: "https://link.trustwallet.com/send?asset=c20000714_t0x55d398326f99059fF775485246999027B3197955&address=0x47668401C85151792784bA44Af23a0c2C197005E"
         },
         "litecoin": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "USDT (ERC20)",
-            qrCodeUrl: "/assets/images/packages/erc20.png",
+            qrCodeUrl: "/assets/images/packages/erc20.jpeg",
             codeImageUrl: "https://link.trustwallet.com/send?address=0x47668401C85151792784bA44Af23a0c2C197005E&asset=c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7"
         }
     };
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
         totalPriceElement.textContent = `Total Price: $${orderData.totalPrice || '0.00'}`;
 
         // Set the QR code URL to display the selected cryptocurrency's QR code
+        console.log("Loading QR Code from:", data.qrCodeUrl);
         if (data.qrCodeUrl) {
             qrCodeElement.src = data.qrCodeUrl;
             qrCodeElement.onload = function() {
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
             };
             qrCodeElement.onerror = function() {
                 console.error("Error loading QR code image.");
-                qrCodeElement.src = '/assets/images/preeseefyimages/copyicon.png'; // Fallback image
+                qrCodeElement.src = '/assets/images/preeseefyimages/copyicon.png'; 
             };
         }
 
