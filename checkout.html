@@ -539,34 +539,16 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <h4>Billing Details</h4>
                                 <div class="toggle w-100" id="toggle2"> 
-                                    <!-- <div class="toggle-item position-relative w-100">
-                                        <h4 class="mb-0 position-relative"><i></i>Express Checkout</h4>
-                                        <div class="row toggle-content w-100">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="firstName" class="form-label">First name *</label>
-                                                    <input type="text" class="form-control" id="firstName">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="lastName" class="form-label">Last name *</label>
-                                                    <input type="text" class="form-control" id="lastName">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <a class="btn btn-outline-primary rounded-pill mt-3 d-inline-block" href="" title="Order Now">Next</a>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                   <!-- Publishing Package Section -->
-<div class="toggle-item position-relative w-100">
-    <h4 class="mb-0 position-relative"><i></i>Publishing Package</h4>
-    <div class="toggle-content selectedPublishingPackage publishing-package  w-100">
-        <p>You selected:</p>
-        <!-- The content will be dynamically inserted by the JavaScript code -->
-    </div>
-</div>
+                                  
+                                   <div class="toggle-item position-relative w-100">
+                                    <h4 class="mb-0 position-relative"><i></i>Publishing Package</h4>
+                                    <div id="packages" class=" toggle-content selectedPublishingPackage publishing-package w-100">
+                                        <p>You selected:</p>
+                                        <!-- The content will be dynamically inserted by the JavaScript code -->
+                                        <!-- Change Package Button -->
+                                    </div>
+                                    <!-- <a class="thm-btn sml-btn brd-btn d-inline-block rounded-pill" href="index.html#packages" title="">Checkout</a> -->
+                                </div>
 
 <!-- Writing Package Section -->
 <div class="toggle-item position-relative w-100">
@@ -890,16 +872,16 @@
       }
     };
     
-    // Handle the send button click
-    sendBtn.onclick = function() {
-      var email = document.getElementById("emailInput").value;
-      if (email) {
-        alert("Email sent to: " + email);
-        popup.style.display = "none";
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    };
+    // // Handle the send button click
+    // sendBtn.onclick = function() {
+    //   var email = document.getElementById("emailInput").value;
+    //   if (email) {
+    //     alert("Email sent to: " + email);
+    //     popup.style.display = "none";
+    //   } else {
+    //     alert("Please enter a valid email address.");
+    //   }
+    // };
     
     
     </script>

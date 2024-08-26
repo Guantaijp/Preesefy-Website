@@ -14,11 +14,24 @@ document.addEventListener("DOMContentLoaded", function() {
         if (publishingPackageContent) {
             publishingPackageContent.innerHTML = `
                 <div class="package-details">
-                   ${selectedPublishingPackage.name ? `<h5>${selectedPublishingPackage.name}</h5>` : ''}
+                    ${selectedPublishingPackage.name ? `<h5>${selectedPublishingPackage.name}</h5>` : ''}
                     <p>${selectedPublishingPackage.description}</p>
                     <strong>Price: $${selectedPublishingPackage.pricing}</strong>
                 </div>
+                <!-- Change Package Button -->
+                <button id="change-package-btn" class="thm-btn sml-btn brd-btn d-inline-block rounded-pill">Change Package</button>
             `;
+
+            
+            // Add event listener for the "Change Package" button
+            const changePackageBtn = document.getElementById('change-package-btn');
+            console.log("Change Package button initialized");  // Confirm button initialization
+
+            changePackageBtn.addEventListener('click', function() {
+                console.log("Navigating to: index.html#packages");
+                window.location.href = 'index.html#packages';  // Attempt to navigate
+            });
+
         }
 
         // Ensure pricing is a string

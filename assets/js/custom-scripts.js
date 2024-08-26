@@ -382,15 +382,29 @@
 	}
 
 	//===== Toggles =====//
-	if ($("#toggle2").length > 0) {
-	  $(function () {
-		$('#toggle2 .toggle-content').hide();
-		$('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
-		$('#toggle2 h4').on("click", function () {
-		  $(this).next().slideToggle('slow').parent().toggleClass("active");
-		});
-	  });
-	}
+	//===== Toggles =====//
+if ($("#toggle2").length > 0) {
+    $(function () {
+        $('#toggle2 .toggle-content').hide();
+        $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
+        $('#toggle2 h4').on("click", function () {
+            $(this).next().slideToggle('slow').parent().toggleClass("active");
+        });
+
+        // Ensure the Change Package button and Checkout link work as expected
+        $('#toggle2').on('click', '#change-package-btn', function(event) {
+            event.preventDefault(); // Prevent default action if any
+            console.log("Change Package button clicked");
+            window.location.href = 'index.html#packages'; // Navigate to the target section
+        });
+
+        $('.thm-btn').on('click', function(event) {
+            console.log("Checkout link clicked");
+            // Optional: You can add any custom logic here if needed
+        });
+    });
+}
+
 
 	if ($(".analys-box").length > 0) {
 	  $("#analys11").waypoint(function () {
