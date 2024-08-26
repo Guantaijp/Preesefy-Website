@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "BARCHART.COM",
             visitors: "7.359M Visitors",
-            imgSrc: "assets/images/packages/barchart2.jpeg",
+            imgSrc: "assets/images/packages/barchart3.jpeg",
             pricing: {
                 "1 PR": 90,
                 "5 PR": 425,
