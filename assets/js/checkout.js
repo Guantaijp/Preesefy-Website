@@ -6,6 +6,46 @@ document.addEventListener("DOMContentLoaded", function() {
     const featuredImageInput = document.getElementById('featured-image');
     let totalPrice = 0;
 
+ 
+    // Fields in the Brand Details section
+    const brandNameInput = document.getElementById('brand-name');
+    const countrySelect = document.getElementById('country');
+    const websiteLinksInput = document.getElementById('website-links');
+    const repNameInput = document.getElementById('rep-name');
+    const repEmailInput = document.getElementById('rep-email');
+    const addressInput = document.getElementById('address');
+    const phoneInput = document.getElementById('phone');
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+
+     // Function to check if all required fields are filled
+     function checkFormCompletion() {
+        const isFormComplete = nameInput.value.trim() !== '' &&
+                               emailInput.value.trim() !== '' &&
+                               cryptoSelect.value !== '' &&
+                               uploadPRInput.files.length > 0 &&
+                               featuredImageInput.files.length > 0 &&
+                               brandNameInput.value.trim() !== '' &&
+                               countrySelect.value !== '' &&
+                               websiteLinksInput.value.trim() !== '' &&
+                               repNameInput.value.trim() !== '' &&
+                               repEmailInput.value.trim() !== '' &&
+                               addressInput.value.trim() !== '' &&
+                               phoneInput.value.trim() !== '';
+        
+        placeOrderButton.disabled = !isFormComplete;
+    }
+
+    // Add event listeners to all form inputs to trigger form completion check
+    [nameInput, emailInput, cryptoSelect, uploadPRInput, featuredImageInput].forEach(input => {
+        input.addEventListener('input', checkFormCompletion);
+        input.addEventListener('change', checkFormCompletion);
+    });
+
+    // Initial form check
+    checkFormCompletion();
+
     // Retrieve the selected publishing package from localStorage
     const selectedPublishingPackage = JSON.parse(localStorage.getItem('selectedPackage'));
 
@@ -18,26 +58,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     <p>${selectedPublishingPackage.description}</p>
                     <strong>Price: $${selectedPublishingPackage.pricing}</strong>
                 </div>
-                <!-- Change Package Button -->
                 <button id="change-package-btn" class="thm-btn sml-btn brd-btn d-inline-block rounded-pill">Change Package</button>
             `;
 
-            
-            // Add event listener for the "Change Package" button
             const changePackageBtn = document.getElementById('change-package-btn');
-            console.log("Change Package button initialized");  // Confirm button initialization
-
             changePackageBtn.addEventListener('click', function() {
-                console.log("Navigating to: index.html#packages");
-                window.location.href = 'index.html#packages';  // Attempt to navigate
+                window.location.href = 'index.html#packages';
             });
-
         }
 
-        // Ensure pricing is a string
         let pricing = selectedPublishingPackage.pricing;
         if (typeof pricing !== 'string') {
-            pricing = pricing.toString(); // Convert number to string if necessary
+            pricing = pricing.toString();
         }
 
         totalPrice = parseFloat(pricing.replace(/[^0-9.-]+/g, "")) || 0;
@@ -45,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("No selected publishing package found.");
     }
 
-    // Function to update the total price based on selected writing package
     function updateTotalPrice() {
         const selectedOption = document.querySelector('input[name="writingPackage"]:checked');
         let writingPackagePrice = 0;
@@ -81,22 +112,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Add event listeners to radio buttons for writing packages
     const radioButtons = document.querySelectorAll('input[name="writingPackage"]');
     radioButtons.forEach(button => {
         button.addEventListener('change', updateTotalPrice);
     });
 
-    placeOrderButton.addEventListener('click', function() {
+    placeOrderButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
         const selectedCrypto = cryptoSelect.value;
         const orderData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
+            name: nameInput.value,
+            email: emailInput.value,
             cryptocurrency: selectedCrypto,
             totalPrice: localStorage.getItem('totalPrice'),
             uploadPR: uploadPRInput.files[0] ? uploadPRInput.files[0].name : '',
             featuredImage: featuredImageInput.files[0] ? featuredImageInput.files[0].name : ''
         };
+
+        // Log the input data to the console
+        console.log("Order Data:", orderData);
 
         // Save the order data to localStorage
         localStorage.setItem('orderData', JSON.stringify(orderData));
@@ -106,5 +141,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     cryptoSelect.addEventListener('change', updateTotalPrice);
-    updateTotalPrice(); // Initial update of total price display
+    updateTotalPrice();
 });

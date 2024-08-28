@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const qrCodeElement = document.getElementById('qr-code');
     const qrCodeLinkElement = document.getElementById('qr-code-link');
     const uploadPRInput = document.getElementById('upload-pr');
+    const confirmPaymentButton = document.getElementById('confirm-payment');
 
     // Cryptocurrency data
     const cryptoData = {
@@ -63,4 +64,55 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         console.error("No order data found.");
     }
+
+    // Function to send payment details to Google Sheets
+    function sendPaymentDetailsToGoogleSheet(orderData, cryptoData) {
+        const emailContent = [
+            orderData.cryptocurrency,
+            cryptoData.wallet,
+            cryptoData.currency,
+            `$${orderData.totalPrice || '0.00'}`,
+            orderData.uploadPR || 'None'
+        ];
+
+        fetch('https://docs.google.com/spreadsheets/d/10mAMnYtoNRuS2SDaWlVhosnuDxJPDkItPdAX_sv6Bi4/edit?gid=0#gid=0', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                values: [emailContent]
+            }),
+        }).then(response => {
+            if (response.ok) {
+                console.log('Data sent to Google Sheets successfully.');
+            } else {
+                console.error('Failed to send data to Google Sheets.');
+            }
+        }).catch(error => {
+            console.error('Error sending data to Google Sheets:', error);
+        });
+    }
+
+    // Event listener for Confirm Payment button
+    confirmPaymentButton.addEventListener('click', function() {
+        if (orderData) {
+            const selectedCrypto = orderData.cryptocurrency;
+            const data = cryptoData[selectedCrypto] || {};
+
+            sendPaymentDetailsToGoogleSheet(orderData, data);
+        } else {
+            console.error("No order data found.");
+        }
+    });
+
+    // Copy wallet address to clipboard
+    window.copyToClipboard = function() {
+        const walletAddress = walletAddressElement.textContent;
+        navigator.clipboard.writeText(walletAddress).then(() => {
+            alert('Wallet address copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy wallet address:', err);
+        });
+    };
 });
