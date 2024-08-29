@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
 
         // Sending email using EmailJS
-        emailjs.send('service_xl52ras', 'template_gghrcix', { message })
+        emailjs.send('service_a3dhgbw', 'template_oq8oz6n', { message })
             .then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
                 alert('Your payment details have been sent successfully!');
