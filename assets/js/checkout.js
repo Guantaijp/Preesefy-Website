@@ -6,41 +6,49 @@ document.addEventListener("DOMContentLoaded", function() {
     const featuredImageInput = document.getElementById('featured-image');
     let totalPrice = 0;
 
- 
     // Fields in the Brand Details section
-    const brandNameInput = document.getElementById('brand-name');
-    const countrySelect = document.getElementById('country');
-    const websiteLinksInput = document.getElementById('website-links');
-    const repNameInput = document.getElementById('rep-name');
-    const repEmailInput = document.getElementById('rep-email');
-    const addressInput = document.getElementById('address');
-    const phoneInput = document.getElementById('phone');
+    const brandDetails = {
+        brandName: document.getElementById('brandName'),
+        country: document.getElementById('country'),
+        websiteLinks: document.getElementById('websiteLinks'),
+        repName: document.getElementById('repName'),
+        repEmail: document.getElementById('repEmail'),
+        address: document.getElementById('address'),
+        phone: document.getElementById('phone'),
+    };
 
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
 
-     // Function to check if all required fields are filled
-     function checkFormCompletion() {
-        const isFormComplete = nameInput.value.trim() !== '' &&
-                               emailInput.value.trim() !== '' &&
-                               cryptoSelect.value !== '' &&
-                               uploadPRInput.files.length > 0 &&
-                               featuredImageInput.files.length > 0 &&
-                               brandNameInput.value.trim() !== '' &&
-                               countrySelect.value !== '' &&
-                               websiteLinksInput.value.trim() !== '' &&
-                               repNameInput.value.trim() !== '' &&
-                               repEmailInput.value.trim() !== '' &&
-                               addressInput.value.trim() !== '' &&
-                               phoneInput.value.trim() !== '';
-        
-        placeOrderButton.disabled = !isFormComplete;
+    // Function to check if all required fields are filled
+    function checkFormCompletion() {
+        return nameInput.value.trim() !== "" &&
+            emailInput.value.trim() !== "" &&
+            cryptoSelect.value !== "" &&
+            uploadPRInput.files.length > 0 &&
+            featuredImageInput.files.length > 0 &&
+            Object.values(brandDetails).every((input) => input.value.trim() !== "");
     }
 
     // Add event listeners to all form inputs to trigger form completion check
-    [nameInput, emailInput, cryptoSelect, uploadPRInput, featuredImageInput].forEach(input => {
-        input.addEventListener('input', checkFormCompletion);
-        input.addEventListener('change', checkFormCompletion);
+    [
+        nameInput,
+        emailInput,
+        cryptoSelect,
+        uploadPRInput,
+        featuredImageInput,
+        brandDetails.brandName,
+        brandDetails.country,
+        brandDetails.websiteLinks,
+        brandDetails.repName,
+        brandDetails.repEmail,
+        brandDetails.address,
+        brandDetails.phone,
+    ].forEach((input) => {
+        if (input) {  // Ensure the element exists
+            input.addEventListener("input", checkFormCompletion);
+            input.addEventListener("change", checkFormCompletion);
+        }
     });
 
     // Initial form check
@@ -120,14 +128,31 @@ document.addEventListener("DOMContentLoaded", function() {
     placeOrderButton.addEventListener('click', function(event) {
         event.preventDefault();
 
+        if (!checkFormCompletion()) {
+            alert("Please fill out all required fields.");
+            return; // Prevent navigation if the form is incomplete
+        }
+
         const selectedCrypto = cryptoSelect.value;
+
         const orderData = {
             name: nameInput.value,
             email: emailInput.value,
-            cryptocurrency: selectedCrypto,
-            totalPrice: localStorage.getItem('totalPrice'),
-            uploadPR: uploadPRInput.files[0] ? uploadPRInput.files[0].name : '',
-            featuredImage: featuredImageInput.files[0] ? featuredImageInput.files[0].name : ''
+            cryptocurrency: cryptoSelect.value,
+            totalPrice: localStorage.getItem("totalPrice"),
+            uploadPR: uploadPRInput.files[0]?.name || "",
+            featuredImage: featuredImageInput.files[0]?.name || "",
+            brandName: brandDetails.brandName ? brandDetails.brandName.value : "",
+            country: brandDetails.country ? brandDetails.country.value : "",
+            websiteLinks: brandDetails.websiteLinks ? brandDetails.websiteLinks.value : "",
+            representativeName: brandDetails.repName ? brandDetails.repName.value : "",
+            representativeEmail: brandDetails.repEmail ? brandDetails.repEmail.value : "",
+            address: brandDetails.address ? brandDetails.address.value : "",
+            phone: brandDetails.phone ? brandDetails.phone.value : "",
+            selectedPublishingPackage: selectedPublishingPackage,
+            selectedWritingPackage: document.querySelector(
+              'input[name="writingPackage"]:checked'
+            )?.value || "",
         };
 
         // Log the input data to the console
