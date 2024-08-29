@@ -65,33 +65,26 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("No order data found.");
     }
 
-    // Function to send payment details to Google Sheets
-    function sendPaymentDetailsToGoogleSheet(orderData, cryptoData) {
-        const emailContent = [
-            orderData.cryptocurrency,
-            cryptoData.wallet,
-            cryptoData.currency,
-            `$${orderData.totalPrice || '0.00'}`,
-            orderData.uploadPR || 'None'
-        ];
+    // Function to send payment details using EmailJS
+    function sendPaymentDetailsByEmail(orderData, cryptoData) {
+        const message = `
+            Cryptocurrency: ${orderData.cryptocurrency || 'Not specified'}
+            Wallet Address: ${cryptoData.wallet || 'Not available'}
+            Currency: ${cryptoData.currency || 'Not available'}
+            Total Price: $${orderData.totalPrice || '0.00'}
+            Upload PR: ${orderData.uploadPR || 'None'}
+        `;
 
-        fetch('https://docs.google.com/spreadsheets/d/10mAMnYtoNRuS2SDaWlVhosnuDxJPDkItPdAX_sv6Bi4/edit?gid=0#gid=0', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                values: [emailContent]
-            }),
-        }).then(response => {
-            if (response.ok) {
-                console.log('Data sent to Google Sheets successfully.');
-            } else {
-                console.error('Failed to send data to Google Sheets.');
-            }
-        }).catch(error => {
-            console.error('Error sending data to Google Sheets:', error);
-        });
+        // Sending email using EmailJS
+        emailjs.send('service_xl52ras', 'template_gghrcix', { message })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Your payment details have been sent successfully!');
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                alert('Failed to send payment details. Please try again later.');
+            });
     }
 
     // Event listener for Confirm Payment button
@@ -100,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const selectedCrypto = orderData.cryptocurrency;
             const data = cryptoData[selectedCrypto] || {};
 
-            sendPaymentDetailsToGoogleSheet(orderData, data);
+            sendPaymentDetailsByEmail(orderData, data);
         } else {
             console.error("No order data found.");
         }
