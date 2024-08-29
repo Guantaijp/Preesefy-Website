@@ -635,7 +635,8 @@ div input[type="file"]:hover {
                     </a>
                     <div>
                         <label for="upload-pr">Upload Payment Screenshot</label>
-                        <input type="file" id="upload-pr" name="payment-screenshot" accept="image/*" />
+                        <input type="file" id="upload-pr">
+                        <span id="file-name-display"></span> 
                     </div>
                     
                     <button id="confirm-payment" class="thm-btn rounded-pill d-inline-block" type="button">Confirm Payment</button>
@@ -743,16 +744,16 @@ function copyToClipboard() {
       }
     };
     
-    // Handle the send button click
-    sendBtn.onclick = function() {
-      var email = document.getElementById("emailInput").value;
-      if (email) {
-        alert("Email sent to: " + email);
-        popup.style.display = "none";
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    };
+    // // Handle the send button click
+    // sendBtn.onclick = function() {
+    //   var email = document.getElementById("emailInput").value;
+    //   if (email) {
+    //     alert("Email sent to: " + email);
+    //     popup.style.display = "none";
+    //   } else {
+    //     alert("Please enter a valid email address.");
+    //   }
+    // };
     
     
     </script>
@@ -763,6 +764,7 @@ function copyToClipboard() {
        emailjs.init("XW1sZvYVtqPyQUa6F"); // Replace with your EmailJS user ID
     })();
  </script>
+
 <script src="assets/js/payment.js"></script>
 <script src="assets/js/checkout.js"></script>
 <script src="assets/js/jquery.min.js"></script>

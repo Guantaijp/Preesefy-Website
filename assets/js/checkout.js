@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         brandName: document.getElementById('brandName'),
         country: document.getElementById('country'),
         websiteLinks: document.getElementById('websiteLinks'),
-        repName: document.getElementById('repName'),
-        repEmail: document.getElementById('repEmail'),
+        // repName: document.getElementById('repName'),
+        // repEmail: document.getElementById('repEmail'),
         address: document.getElementById('address'),
         phone: document.getElementById('phone'),
     };

@@ -9,19 +9,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Cryptocurrency data
     const cryptoData = {
-        "bitcoin": {
+        "usdt(trc20)": {
             wallet: "TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr",
             currency: "USDT (TRC20)",
             qrCodeUrl: "/assets/images/packages/trc20.jpeg",
             codeImageUrl: "https://link.trustwallet.com/send?asset=c195_tTR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&address=TDmj9EF7n8azZkZG4N2j3hdXPndWmNn8nr"
         },
-        "ethereum": {
+        "busd(bep20)": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "BUSD (BEP20)",
             qrCodeUrl: "/assets/images/packages/bep20.jpeg",
             codeImageUrl: "https://link.trustwallet.com/send?asset=c20000714_t0x55d398326f99059fF775485246999027B3197955&address=0x47668401C85151792784bA44Af23a0c2C197005E"
         },
-        "litecoin": {
+        "usdt(erc20)": {
             wallet: "0x47668401C85151792784bA44Af23a0c2C197005E",
             currency: "USDT (ERC20)",
             qrCodeUrl: "/assets/images/packages/erc20.jpeg",
@@ -55,11 +55,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         qrCodeLinkElement.href = data.codeImageUrl || '#';
 
-        // Display upload PR file if available
+        const fileNameDisplay = document.getElementById('file-name-display');
+
+        // Display upload PR file name if available
         if (orderData.uploadPR) {
-            uploadPRInput.value = orderData.uploadPR; // This will not set a file, only show file name
+            fileNameDisplay.textContent = orderData.uploadPR; // Display file name
         } else {
-            uploadPRInput.value = ''; // Ensure no file is selected
+            fileNameDisplay.textContent = 'No file selected'; // Default message if no file is selected
         }
     } else {
         console.error("No order data found.");
@@ -68,11 +70,22 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to send payment details using EmailJS
     function sendPaymentDetailsByEmail(orderData, cryptoData) {
         const message = `
+            Name: ${orderData.name || 'N/A'}
+            Email: ${orderData.email || 'N/A'}
             Cryptocurrency: ${orderData.cryptocurrency || 'Not specified'}
             Wallet Address: ${cryptoData.wallet || 'Not available'}
             Currency: ${cryptoData.currency || 'Not available'}
             Total Price: $${orderData.totalPrice || '0.00'}
+            Brand Name: ${orderData.brandName || 'N/A'}
+            Country: ${orderData.country || 'N/A'}
+            Website Links: ${orderData.websiteLinks || 'N/A'}
+        
+            Address: ${orderData.address || 'N/A'}
+            Phone: ${orderData.phone || 'N/A'}
             Upload PR: ${orderData.uploadPR || 'None'}
+            Featured Image: ${orderData.featuredImage || 'None'}
+            Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
+            Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
         `;
 
         // Sending email using EmailJS
