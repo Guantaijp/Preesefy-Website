@@ -734,6 +734,18 @@
     </div><!-- Bottom Bar -->
 </main><!-- Main Wrapper -->
 
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize EmailJS with your user ID
+    emailjs.init("XW1sZvYVtqPyQUa6F"); // Replace with your actual EmailJS user ID
+  });
+</script>
+
+
 <script>
     // Array containing titles, descriptions, and PDF paths
     const contentArray = [
@@ -749,134 +761,171 @@
         { title: "Retail Press Release", description: "Promote retail openings, sales events, or product launches with a retail press release that drives customer interest and boosts foot traffic.", pdfPath: "https://drive.google.com/uc?export=download&id=1FAfKT7f34ZD3JuTSgNXNilZiGY0rtpj3" },
     ];
 
-
 // Function to create content dynamically
 function createToggleItems() {
-    const toggleContainer = document.getElementById('toggle2');
+        const toggleContainer = document.getElementById('toggle2');
 
-    contentArray.forEach((item) => {
-        const toggleItem = document.createElement('div');
-        toggleItem.classList.add('toggle-item', 'v2', 'position-relative', 'w-100');
+        contentArray.forEach((item) => {
+            const toggleItem = document.createElement('div');
+            toggleItem.classList.add('toggle-item', 'v2', 'position-relative', 'w-100');
 
-        const toggleTitle = document.createElement('h4');
-        toggleTitle.classList.add('mb-0', 'position-relative');
-        toggleTitle.innerHTML = `<i></i>${item.title}`;
-        toggleItem.appendChild(toggleTitle);
+            const toggleTitle = document.createElement('h4');
+            toggleTitle.classList.add('mb-0', 'position-relative');
+            toggleTitle.innerHTML = `<i></i>${item.title}`;
+            toggleItem.appendChild(toggleTitle);
 
-        const toggleContent = document.createElement('div');
-        toggleContent.classList.add('toggle-content', 'w-100');
-        toggleContent.innerHTML = `<p class="mb-0">${item.description}</p>`;
+            const toggleContent = document.createElement('div');
+            toggleContent.classList.add('toggle-content', 'w-100');
+            toggleContent.innerHTML = `<p class="mb-0">${item.description}</p>`;
 
-        const downloadButton = document.createElement('button');
-        downloadButton.classList.add('btn', 'mt-2', 'thm-btn', 'brd-btn' ,'rounded-pill', 'd-inline-block');
-        downloadButton.textContent = 'Download Sample PDF';
-        downloadButton.setAttribute('onclick', `showPopup('${item.pdfPath}');`);
+            const downloadButton = document.createElement('button');
+            downloadButton.classList.add('btn', 'mt-2', 'thm-btn', 'brd-btn', 'rounded-pill', 'd-inline-block');
+            downloadButton.textContent = 'Download Sample PDF';
+            downloadButton.setAttribute('onclick', `showPopup('${item.pdfPath}');`);
 
-        toggleContent.appendChild(downloadButton);
-        toggleItem.appendChild(toggleContent);
-        toggleContainer.appendChild(toggleItem);
-    });
-}
+            toggleContent.appendChild(downloadButton);
+            toggleItem.appendChild(toggleContent);
+            toggleContainer.appendChild(toggleItem);
+        });
+    }
 
-const closeButton = document.querySelector('.close');
+    const closeButton = document.querySelector('.close');
     const popup = document.getElementById('downloadPopup');
 
     // Add event listener to close the popup when the close button is clicked
-    closeButton.addEventListener('click', function() {
+    closeButton.addEventListener('click', function () {
         popup.style.display = 'none';
     });
 
-// Function to show the popup and set the PDF path
-function showPopup(pdfPath) {
-    document.getElementById('pdfPath').value = pdfPath;
-    document.getElementById('downloadPopup').style.display = 'block';
-}
-
-// Event listener for form submission button
-document.getElementById('submitButton').addEventListener('click', function() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const pdfPath = document.getElementById('pdfPath').value;
-
-    if (name && email) {
-        // Here you would send the email
-        sendEmail(name, email, pdfPath);
-
-        // After sending email, download the PDF
-        window.location.href = pdfPath;
-
-        // Close the popup
-        document.getElementById('downloadPopup').style.display = 'none';
-    } else {
-        alert('Please enter both your name and email.');
+    // Function to show the popup and set the PDF path
+    function showPopup(pdfPath) {
+        document.getElementById('pdfPath').value = pdfPath;
+        document.getElementById('downloadPopup').style.display = 'block';
     }
-});
 
-// Function to send email (this is a placeholder, implement actual email sending logic)
-function sendEmail(name, email, pdfPath) {
-    // Replace this with your email sending logic
-    console.log(`Sending email: Name=${name}, Email=${email}, PDF=${pdfPath}`);
-    // You can use EmailJS, a backend service, or any email API to send the email
-}
+    // Function to send email using EmailJS
+    function sendEmail(name, email, pdfPath) {
+        const serviceID = 'service_xl52ras';
+        const templateID = 'template_gghrcix';
 
-// Call the function to populate the content
-createToggleItems();
+        const message = {
+            name: name,
+            email: email,
+            pdf_path: pdfPath, // Ensure this matches the field names in your EmailJS template
+        };
 
-// Toggle functionality
-if ($("#toggle2").length > 0) {
-    $(function () {
-        $('#toggle2 .toggle-content').hide();
-        $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
-        $('#toggle2 h4').on("click", function () {
-            $(this).next().slideToggle('slow').parent().toggleClass("active");
-        });
+        // Send the email using EmailJS
+        emailjs.send(serviceID, templateID, message)
+            .then(function (response) {
+                alert(`Email sent successfully to: ${email}`);
+                console.log('Email sent successfully!', response.status, response.text);
+
+                // After sending email, download the PDF
+                window.location.href = pdfPath;
+
+                // Close the popup
+                document.getElementById('downloadPopup').style.display = 'none';
+            }, function (error) {
+                alert('Failed to send email. Please try again.');
+                console.log('Failed to send email. Error:', error);
+            });
+    }
+
+    // Event listener for form submission button
+    document.getElementById('submitButton').addEventListener('click', function () {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const pdfPath = document.getElementById('pdfPath').value;
+
+        if (name && email) {
+            // Call sendEmail function to send the email
+            sendEmail(name, email, pdfPath);
+        } else {
+            alert('Please enter both your name and email.');
+        }
     });
-}
 
-// Close the popup when the user clicks on <span> (x)
-document.querySelector('.popup .close').onclick = function() {
-    document.getElementById('downloadPopup').style.display = 'none';
-};
+    // Call the function to populate the content
+    createToggleItems();
+
+    // jQuery toggle functionality
+    if ($("#toggle2").length > 0) {
+        $(function () {
+            $('#toggle2 .toggle-content').hide();
+            $('#toggle2 h4:first').next().slideDown(500).parent().addClass("active");
+            $('#toggle2 h4').on("click", function () {
+                $(this).next().slideToggle('slow').parent().toggleClass("active");
+            });
+        });
+    }
+
+    // Close the popup when the user clicks on <span> (x)
+    document.querySelector('.popup .close').onclick = function () {
+        document.getElementById('downloadPopup').style.display = 'none';
+    };
 
 </script>
-
+<!-- 
 <script>
+    // Initialize EmailJS
+    (function() {
+      emailjs.init('0NG2GrfkHEMCZglaF'); // Replace with your EmailJS user ID
+    })();
+  
     // Get the elements
     var popups = document.getElementById("emailPopup");
     var link = document.getElementById("orderStatusLink");
     var closeBtn = document.getElementsByClassName("close")[0];
     var sendBtn = document.getElementById("sendEmail");
-    
+  
     // Show the popup when the link is clicked
     link.onclick = function() {
       popups.style.display = "block";
     };
-    
+  
     // Close the popup when the close button is clicked
     closeBtn.onclick = function() {
       popups.style.display = "none";
     };
-    
+  
     // Close the popup when clicking outside the popup content
     window.onclick = function(event) {
       if (event.target == popups) {
         popups.style.display = "none";
       }
     };
-    
+  
     // Handle the send button click
     sendBtn.onclick = function() {
+      var name = document.getElementById("nameInput").value;
       var email = document.getElementById("emailInput").value;
-      if (email) {
-        alert("Email sent to: " + email);
-        popups.style.display = "none";
+      var pdfPath = "path/to/your/pdf"; // Replace with the actual path of the PDF
+  
+      if (name && email) {
+        // Send the email using EmailJS
+        emailjs.send('service_xl52ras', 'template_gghrcix', { // Replace with your EmailJS service and template ID
+          name: name,
+          email: email,
+          pdfPath: pdfPath
+        }).then(function(response) {
+          alert("Email sent successfully to: " + email);
+          console.log('Email sent successfully!', response.status, response.text);
+  
+          // Close the popup
+          popups.style.display = "none";
+  
+          // Start the PDF download
+          window.location.href = pdfPath;
+  
+        }, function(error) {
+          alert("Failed to send email. Please try again.");
+          console.log('Failed to send email. Error:', error);
+        });
       } else {
-        alert("Please enter a valid email address.");
+        alert("Please enter a valid name and email address.");
       }
     };
-    
-    
-    </script>
+  </script> -->
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
