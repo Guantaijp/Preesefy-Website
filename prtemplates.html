@@ -817,7 +817,7 @@ function createToggleItems() {
         // Send the email using EmailJS
         emailjs.send(serviceID, templateID, message)
             .then(function (response) {
-                alert(`Email sent successfully to: ${email}`);
+                alert(`Email sent successfully`);
                 console.log('Email sent successfully!', response.status, response.text);
 
                 // After sending email, download the PDF
