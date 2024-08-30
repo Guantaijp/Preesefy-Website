@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const cryptoSelect = document.getElementById('crypto-payment');
     const totalPriceElement = document.querySelector('.total-price');
     const placeOrderButton = document.querySelector('#place-order');
-    const uploadPRInput = document.getElementById('upload-pr');
-    const featuredImageInput = document.getElementById('featured-image');
+    const uploadPRInput = document.getElementById('pressrelease');
+    // const featuredImageInput = document.getElementById('featured-image');
     let totalPrice = 0;
 
     // Fields in the Brand Details section
@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return nameInput.value.trim() !== "" &&
             emailInput.value.trim() !== "" &&
             cryptoSelect.value !== "" &&
-            uploadPRInput.files.length > 0 &&
-            featuredImageInput.files.length > 0 &&
+            uploadPRInput.value.length > 0 &&
             Object.values(brandDetails).every((input) => input.value.trim() !== "");
     }
 
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
         emailInput,
         cryptoSelect,
         uploadPRInput,
-        featuredImageInput,
         brandDetails.brandName,
         brandDetails.country,
         brandDetails.websiteLinks,
@@ -140,8 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
             email: emailInput.value,
             cryptocurrency: cryptoSelect.value,
             totalPrice: localStorage.getItem("totalPrice"),
-            uploadPR: uploadPRInput.files[0]?.name || "",
-            featuredImage: featuredImageInput.files[0]?.name || "",
+            uploadPR: uploadPRInput.value,
             brandName: brandDetails.brandName ? brandDetails.brandName.value : "",
             country: brandDetails.country ? brandDetails.country.value : "",
             websiteLinks: brandDetails.websiteLinks ? brandDetails.websiteLinks.value : "",

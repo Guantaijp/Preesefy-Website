@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPriceElement = document.querySelector(".total-price");
     const qrCodeElement = document.getElementById("qr-code");
     const qrCodeLinkElement = document.getElementById("qr-code-link");
-    const uploadPRInput = document.getElementById("upload-pr");
+    const uploadPRInput = document.getElementById("uploadscreenshot");
     const confirmPaymentButton = document.getElementById("confirm-payment");
     const fileNameDisplay = document.getElementById('file-name-display');
 
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
             Website Links: ${orderData.websiteLinks || 'N/A'}
             Address: ${orderData.address || 'N/A'}
             Phone: ${orderData.phone || 'N/A'}
-            Upload PR: ${uploadPRInput.files[0]?.name || orderData.uploadPR || 'None'}
-            Featured Image: ${orderData.featuredImage || 'None'}
+            Upload PR:${ orderData.uploadPR || 'None'}
+           
             Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
             Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
         `;
@@ -116,29 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Error sending message to Telegram:', error);
         });
 
-        // Function to upload an image to Telegram
-        function uploadImageToTelegram(imageFile) {
-            const formData = new FormData();
-            formData.append('chat_id', chatId);
-            formData.append('photo', imageFile);
-
-            return fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    console.log('Image uploaded successfully!');
-                } else {
-                    console.log('Failed to upload image:', data);
-                }
-            })
-            .catch(error => {
-                console.error('Error uploading image to Telegram:', error);
-            });
-        }
-
         // Upload payment screenshot if available
         const uploadPRFile = uploadPRInput.files[0];
         if (uploadPRFile) {
@@ -149,6 +126,32 @@ document.addEventListener("DOMContentLoaded", function () {
         if (orderData.featuredImageFile) {
             uploadImageToTelegram(orderData.featuredImageFile);
         }
+    }
+
+    // Function to upload an image to Telegram
+    function uploadImageToTelegram(imageFile) {
+        const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
+        const chatId = '7383651381';
+
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', imageFile);
+
+        fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Image uploaded successfully!');
+            } else {
+                console.log('Failed to upload image:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading image to Telegram:', error);
+        });
     }
 
     // Event listener for Confirm Payment button
