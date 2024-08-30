@@ -73,25 +73,47 @@ document.addEventListener("DOMContentLoaded", function () {
         const botToken = '7146693702:AAGzqiUlBSCt11LzsswFpkNknddDnHRsvxk';
         const chatId = '565779685';
 
+
         // Construct the message to send
         const message = `
-            Name: ${orderData.name || 'N/A'}
-            Email: ${orderData.email || 'N/A'}
-            Cryptocurrency: ${orderData.cryptocurrency || 'Not specified'}
-            Wallet Address: ${cryptoData.wallet || 'Not available'}
-            Currency: ${cryptoData.currency || 'Not available'}
-            Total Price: $${orderData.totalPrice || '0.00'}
-            Brand Name: ${orderData.brandName || 'N/A'}
-            Country: ${orderData.country || 'N/A'}
-            Website Links: ${orderData.websiteLinks || 'N/A'}
-            Address: ${orderData.address || 'N/A'}
-            Phone: ${orderData.phone || 'N/A'}
-            Upload PR:${ orderData.uploadPR || 'None'}
-           
-            Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
-            Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
+        New Payment Received
+        
+        Here are the details of the recent payment:
+        
+        Client Name: ${orderData.name || 'N/A'}
+        
+        Client Email: ${orderData.email || 'N/A'}
+        
+        Cryptocurrency Chosen: ${orderData.cryptocurrency || 'Not specified'}
+        
+        Wallet Address Provided: ${cryptoData.wallet || 'Not available'}
+        
+        Currency Type: ${cryptoData.currency || 'Not available'}
+        
+        Total Price: $${orderData.totalPrice || '0.00'}
+        
+        Brand Name: ${orderData.brandName || 'N/A'}
+        
+        Client Country: ${orderData.country || 'N/A'}
+        
+        Website Links Provided: ${orderData.websiteLinks || 'N/A'}
+        
+        Client Address: ${orderData.address || 'N/A'}
+        
+        Client Phone: ${orderData.phone || 'N/A'}
+        
+        Uploaded PR: ${orderData.uploadPR || 'None'}
+        
+        Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
+        
+        Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
+        
+        Please review the details and process the payment accordingly.
+        
+        Thank you!
         `;
-
+        
+        
         // Send the message text to Telegram
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
             method: 'POST',
