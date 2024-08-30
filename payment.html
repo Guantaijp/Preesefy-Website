@@ -626,7 +626,6 @@ div input[type="file"]:hover {
                             </button>
                         </p>
                     </div>
-                    
                     <p>Currency: <span id="currency"></span></p>
                     <p><span class="total-price"></span></p>
                     <p>QR Code Scan to pay:</p>
@@ -635,10 +634,9 @@ div input[type="file"]:hover {
                     </a>
                     <div>
                         <label for="upload-pr">Upload Payment Screenshot</label>
-                        <input type="file" id="upload-pr">
-                        <span id="file-name-display"></span> 
+                        <input type="file" id="upload-pr" accept="image/*">
+                        <span id="file-name-display">No file selected</span>
                     </div>
-                    
                     <button id="confirm-payment" class="thm-btn rounded-pill d-inline-block" type="button">Confirm Payment</button>
                 </div>
                 

@@ -1,11 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const walletAddressElement = document.getElementById('wallet-address');
-    const currencyElement = document.getElementById('currency');
-    const totalPriceElement = document.querySelector('.total-price');
-    const qrCodeElement = document.getElementById('qr-code');
-    const qrCodeLinkElement = document.getElementById('qr-code-link');
-    const uploadPRInput = document.getElementById('upload-pr');
-    const confirmPaymentButton = document.getElementById('confirm-payment');
+document.addEventListener("DOMContentLoaded", function () {
+    const walletAddressElement = document.getElementById("wallet-address");
+    const currencyElement = document.getElementById("currency");
+    const totalPriceElement = document.querySelector(".total-price");
+    const qrCodeElement = document.getElementById("qr-code");
+    const qrCodeLinkElement = document.getElementById("qr-code-link");
+    const uploadPRInput = document.getElementById("upload-pr");
+    const confirmPaymentButton = document.getElementById("confirm-payment");
+    const fileNameDisplay = document.getElementById('file-name-display');
 
     // Cryptocurrency data
     const cryptoData = {
@@ -40,35 +41,39 @@ document.addEventListener("DOMContentLoaded", function() {
         currencyElement.textContent = data.currency || 'Not available';
         totalPriceElement.textContent = `Total Price: $${orderData.totalPrice || '0.00'}`;
 
-        // Set the QR code URL to display the selected cryptocurrency's QR code
-        console.log("Loading QR Code from:", data.qrCodeUrl);
         if (data.qrCodeUrl) {
             qrCodeElement.src = data.qrCodeUrl;
-            qrCodeElement.onload = function() {
-                console.log("QR code image loaded successfully.");
-            };
-            qrCodeElement.onerror = function() {
-                console.error("Error loading QR code image.");
-                qrCodeElement.src = '/assets/images/preeseefyimages/copyicon.png'; 
+            qrCodeElement.onerror = function () {
+                qrCodeElement.src = '/assets/images/preeseefyimages/copyicon.png';
             };
         }
 
         qrCodeLinkElement.href = data.codeImageUrl || '#';
 
-        const fileNameDisplay = document.getElementById('file-name-display');
-
-        // Display upload PR file name if available
-        if (orderData.uploadPR) {
-            fileNameDisplay.textContent = orderData.uploadPR; // Display file name
-        } else {
-            fileNameDisplay.textContent = 'No file selected'; // Default message if no file is selected
-        }
+        // Update file name display
+        updateFileNameDisplay();
     } else {
         console.error("No order data found.");
     }
 
-    // Function to send payment details using EmailJS
-    function sendPaymentDetailsByEmail(orderData, cryptoData) {
+    function updateFileNameDisplay() {
+        if (fileNameDisplay) {
+            if (uploadPRInput.files.length > 0) {
+                fileNameDisplay.textContent = uploadPRInput.files[0].name;
+            } else if (orderData && orderData.uploadPR) {
+                fileNameDisplay.textContent = orderData.uploadPR;
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+            }
+        }
+    }
+
+    // Function to send payment details and images to Telegram
+    function sendPaymentDetailsToTelegram(orderData, cryptoData) {
+        const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
+        const chatId = '7383651381';
+
+        // Construct the message to send
         const message = `
             Name: ${orderData.name || 'N/A'}
             Email: ${orderData.email || 'N/A'}
@@ -79,46 +84,99 @@ document.addEventListener("DOMContentLoaded", function() {
             Brand Name: ${orderData.brandName || 'N/A'}
             Country: ${orderData.country || 'N/A'}
             Website Links: ${orderData.websiteLinks || 'N/A'}
-        
             Address: ${orderData.address || 'N/A'}
             Phone: ${orderData.phone || 'N/A'}
-            Upload PR: ${orderData.uploadPR || 'None'}
+            Upload PR: ${uploadPRInput.files[0]?.name || orderData.uploadPR || 'None'}
             Featured Image: ${orderData.featuredImage || 'None'}
             Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
             Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
         `;
 
-        // Sending email using EmailJS
-        emailjs.send('service_a3dhgbw', 'template_oq8oz6n', { message })
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Your payment details have been sent successfully!');
+        // Send the message text to Telegram
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Message sent successfully!');
+                alert('Your payment details have been sent successfully via Telegram!');
+            } else {
+                console.log('Failed to send the message:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error sending message to Telegram:', error);
+        });
+
+        // Function to upload an image to Telegram
+        function uploadImageToTelegram(imageFile) {
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('photo', imageFile);
+
+            return fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                method: 'POST',
+                body: formData,
             })
-            .catch(function(error) {
-                console.log('FAILED...', error);
-                alert('Failed to send payment details. Please try again later.');
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    console.log('Image uploaded successfully!');
+                } else {
+                    console.log('Failed to upload image:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading image to Telegram:', error);
             });
+        }
+
+        // Upload payment screenshot if available
+        const uploadPRFile = uploadPRInput.files[0];
+        if (uploadPRFile) {
+            uploadImageToTelegram(uploadPRFile);
+        }
+
+        // Upload featured image if available
+        if (orderData.featuredImageFile) {
+            uploadImageToTelegram(orderData.featuredImageFile);
+        }
     }
 
     // Event listener for Confirm Payment button
-    confirmPaymentButton.addEventListener('click', function() {
+    confirmPaymentButton.addEventListener('click', function () {
         if (orderData) {
             const selectedCrypto = orderData.cryptocurrency;
             const data = cryptoData[selectedCrypto] || {};
 
-            sendPaymentDetailsByEmail(orderData, data);
+            sendPaymentDetailsToTelegram(orderData, data);
         } else {
-            console.error("No order data found.");
+            console.error('No order data found.');
         }
     });
 
     // Copy wallet address to clipboard
-    window.copyToClipboard = function() {
+    window.copyToClipboard = function () {
         const walletAddress = walletAddressElement.textContent;
-        navigator.clipboard.writeText(walletAddress).then(() => {
-            alert('Wallet address copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy wallet address:', err);
-        });
+        navigator.clipboard.writeText(walletAddress)
+            .then(() => {
+                alert('Wallet address copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Failed to copy wallet address:', err);
+            });
     };
+
+    // Add event listener for file input change to update UI
+    uploadPRInput.addEventListener('change', function(event) {
+        updateFileNameDisplay();
+    });
 });
