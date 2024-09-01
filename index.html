@@ -192,16 +192,19 @@
                         </ul>
                     </nav>
                     <div class="header-btns d-inline-flex flex-wrap align-items-center">
-                        <!-- <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a> -->
+                        <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a>
                         <!-- <a class="thm-btn brd-btn rounded-pill d-inline-block" href="checkout.html" title="">Order Now</a> -->
                     </div>
                     <div id="emailPopup" class="popup">
                         <div class="popup-content">
                           <span class="close">&times;</span>
                           <h2>Order Status</h2>
-                          <p>Please fill the Order ID provided below:</p>
-                          <input type="text" id="orderIdInput" placeholder="Enter your Order ID">
-                          <button id="sendOrderId">Send</button>
+                          <p>Please fill the your email to get your order status:</p>
+                           <form name="submit-to-google-sheet">
+                            <input name="email" type="email" placeholder="Email" required>
+                        
+                            <button type="submit">Send</button>
+                        </form>
                         </div>
                       </div>
                 </div>
@@ -1786,7 +1789,36 @@
             </div>
         </div>
     </div><!-- Bottom Bar -->
-</main><!-- Main Wrapper -->
+
+    <!-- <form name="submit-to-google-sheet">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="firstName" type="text" placeholder="First Name">
+        <input name="lastName" type="text" placeholder="Last Name">
+        <button type="submit">Send</button>
+    </form> -->
+
+</main>
+<!-- Main Wrapper -->
+
+<!-- <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script> -->
+<!-- https://script.google.com/macros/s/AKfycbw189cbx--7oJntEN__BfeHAvSXmk3OtiOI1mbhDejdCCtWa6ykjWuEFTgjiLOxiSHtHw/exec -->
+
+<script>
+    // const scriptURL = 'https://script.google.com/macros/s/AKfycbw189cbx--7oJntEN__BfeHAvSXmk3OtiOI1mbhDejdCCtWa6ykjWuEFTgjiLOxiSHtHw/exec'
+   
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZNhjfiFmYRzMjQF84k9Ob1KsDw8tFchLVqcKNzkxh7OQTTNjRMzUz9PY0vrEjK2UUIw/exec'
+
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 <script>
 // Get the elements
