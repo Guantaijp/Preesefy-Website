@@ -181,13 +181,125 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
+
+    // Function to send data to Google Spreadsheet
+    function sendDataToGoogleSheet(orderData, cryptoData) {
+        const googleScriptURL = 'https://script.google.com/macros/s/AKfycby-zDuM0FUJd7joOUcSp6quG_4IgR8hESFZd_q8cq-5sPeWfrGfqOoVXMaHenbFvAX3fQ/exec';
+      
+        // First, send a preflight request
+        fetch(googleScriptURL, {
+          method: 'OPTIONS',
+          headers: {
+            'Origin': window.location.origin,
+            'Access-Control-Request-Method': 'POST',
+            'Access-Control-Request-Headers': 'Content-Type'
+          }
+        }).then(() => {
+          // After successful preflight, send the actual data
+          return fetch(googleScriptURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: orderData.name || 'N/A',
+              email: orderData.email || 'N/A',
+              cryptocurrency: orderData.cryptocurrency || 'Not specified',
+              walletAddress: cryptoData.wallet || 'Not available',
+              currencyType: cryptoData.currency || 'Not available',
+              totalPrice: orderData.totalPrice || '0.00',
+              brandName: orderData.brandName || 'N/A',
+              country: orderData.country || 'N/A',
+              websiteLinks: orderData.websiteLinks || 'N/A',
+              address: orderData.address || 'N/A',
+              phone: orderData.phone || 'N/A',
+              uploadPR: orderData.uploadPR || 'None',
+              selectedPublishingPackage: orderData.selectedPublishingPackage?.name || 'N/A',
+              selectedWritingPackage: orderData.selectedWritingPackage || 'N/A'
+            }),
+          });
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Data sent to Google Sheet successfully:', data);
+        })
+        .catch(error => {
+          console.error('Error sending data to Google Sheet:', error);
+        });
+      }
+      
+
+      emailjs.init('0NG2GrfkHEMCZglaF');
+
+      // Function to send email using EmailJS
+      function sendEmail(to, subject, orderData, cryptoData) {
+          // Construct the message text
+          const message = `
+          New Payment Received
+
+          Here are the details of the recent payment:
+
+          Client Name: ${orderData.name || 'N/A'}
+          Client Email: ${to}
+
+          Cryptocurrency Chosen: ${orderData.cryptocurrency || 'Not specified'}
+          Wallet Address Provided: ${cryptoData.wallet || 'Not available'}
+          Currency Type: ${cryptoData.currency || 'Not available'}
+          Total Price: $${orderData.totalPrice || '0.00'}
+          Brand Name: ${orderData.brandName || 'N/A'}
+          Client Country: ${orderData.country || 'N/A'}
+          Website Links Provided: ${orderData.websiteLinks || 'N/A'}
+          Client Address: ${orderData.address || 'N/A'}
+          Client Phone: ${orderData.phone || 'N/A'}
+          Uploaded PR: ${orderData.uploadPR || 'None'}
+          Selected Publishing Package: ${orderData.selectedPublishingPackage?.name || 'N/A'}
+          Selected Writing Package: ${orderData.selectedWritingPackage || 'N/A'}
+
+          Please review the details and process the payment accordingly.
+
+          Thank you!
+          `;
+
+          // Send the email
+          emailjs.send('service_f4okvuy', 'template_oq8oz6n', {
+              to_email: to,
+              client_name: orderData.name || 'N/A',
+              cryptocurrency: orderData.cryptocurrency || 'Not specified',
+              wallet: cryptoData.wallet || 'Not available',
+              currency: cryptoData.currency || 'Not available',
+              total_price: orderData.totalPrice || '0.00',
+              brand_name: orderData.brandName || 'N/A',
+              country: orderData.country || 'N/A',
+              website_links: orderData.websiteLinks || 'N/A',
+              address: orderData.address || 'N/A',
+              phone: orderData.phone || 'N/A',
+              upload_pr: orderData.uploadPR || 'None',
+              publishing_package: orderData.selectedPublishingPackage?.name || 'N/A',
+              writing_package: orderData.selectedWritingPackage || 'N/A',
+              message: message
+          })
+          .then(response => {
+              console.log('Email sent successfully:', response);
+          })
+          .catch(error => {
+              console.error('Error sending email:', error);
+          });
+      }
+
+
+
     // Event listener for Confirm Payment button
     confirmPaymentButton.addEventListener('click', function () {
         if (orderData) {
             const selectedCrypto = orderData.cryptocurrency;
             const data = cryptoData[selectedCrypto] || {};
-
+            sendDataToGoogleSheet(orderData, cryptoData);
             sendPaymentDetailsToTelegram(orderData, data);
+            if (orderData.email) {
+                const emailSubject = 'New Payment Received';
+                sendEmail(orderData.email, emailSubject, orderData, cryptoData);
+            }
         } else {
             console.error('No order data found.');
         }
