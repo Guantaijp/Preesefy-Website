@@ -185,40 +185,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to send data to Google Spreadsheet
     function sendDataToGoogleSheet(orderData, cryptoData) {
-        const googleScriptURL = 'https://script.google.com/macros/s/AKfycby-zDuM0FUJd7joOUcSp6quG_4IgR8hESFZd_q8cq-5sPeWfrGfqOoVXMaHenbFvAX3fQ/exec';
+        const googleScriptURL = 'https://script.google.com/macros/s/AKfycbygyLAsWzEgR-CO9uTT4qhlda2A3mUocYFKYPX-liqeR82zL8cc1_Equd-BgOLPTiWSAA/exec';
       
-        // First, send a preflight request
+        // Construct the payload
+        const payload = {
+          name: orderData.name || 'N/A',
+          email: orderData.email || 'N/A',
+          cryptocurrency: orderData.cryptocurrency || 'Not specified',
+          walletAddress: cryptoData.wallet || 'Not available',
+          currencyType: cryptoData.currency || 'Not available',
+          totalPrice: orderData.totalPrice || '0.00',
+          brandName: orderData.brandName || 'N/A',
+          country: orderData.country || 'N/A',
+          websiteLinks: orderData.websiteLinks || 'N/A',
+          address: orderData.address || 'N/A',
+          phone: orderData.phone || 'N/A',
+          uploadPR: orderData.uploadPR || 'None',
+          selectedPublishingPackage: orderData.selectedPublishingPackage?.name || 'N/A',
+          selectedWritingPackage: orderData.selectedWritingPackage || 'N/A'
+        };
+      
+        // Send the POST request
         fetch(googleScriptURL, {
-          method: 'OPTIONS',
+          method: 'POST',
           headers: {
-            'Origin': window.location.origin,
-            'Access-Control-Request-Method': 'POST',
-            'Access-Control-Request-Headers': 'Content-Type'
-          }
-        }).then(() => {
-          // After successful preflight, send the actual data
-          return fetch(googleScriptURL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: orderData.name || 'N/A',
-              email: orderData.email || 'N/A',
-              cryptocurrency: orderData.cryptocurrency || 'Not specified',
-              walletAddress: cryptoData.wallet || 'Not available',
-              currencyType: cryptoData.currency || 'Not available',
-              totalPrice: orderData.totalPrice || '0.00',
-              brandName: orderData.brandName || 'N/A',
-              country: orderData.country || 'N/A',
-              websiteLinks: orderData.websiteLinks || 'N/A',
-              address: orderData.address || 'N/A',
-              phone: orderData.phone || 'N/A',
-              uploadPR: orderData.uploadPR || 'None',
-              selectedPublishingPackage: orderData.selectedPublishingPackage?.name || 'N/A',
-              selectedWritingPackage: orderData.selectedWritingPackage || 'N/A'
-            }),
-          });
+            'Content-Type': 'application/json' // Specify that the content is JSON
+          },
+          body: JSON.stringify(payload)
         })
         .then(response => response.json())
         .then(data => {
@@ -294,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (orderData) {
             const selectedCrypto = orderData.cryptocurrency;
             const data = cryptoData[selectedCrypto] || {};
-            sendDataToGoogleSheet(orderData, cryptoData);
+            // sendDataToGoogleSheet(orderData, cryptoData);
             sendPaymentDetailsToTelegram(orderData, data);
             if (orderData.email) {
                 const emailSubject = 'New Payment Received';
