@@ -27,6 +27,72 @@
     <link rel="stylesheet" href="assets/css/revolution/navigation.css">
 </head>
 <body>
+    <style>
+        /* Style for the popup background */
+.popup {
+  display: block; /* Show the popup by default */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 9999; /* Ensure the popup is on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the popup content box */
+.popup-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: start;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+/* Style for the close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Style for the input field */
+input[type="email"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+  background-color: #ffaf00;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+    </style>
 <main>
     <header class="style1 w-100">
         <div class="topbar bg-color4 w-100">
@@ -203,7 +269,7 @@
                            <form name="submit-to-google-sheet">
                             <input name="email" type="email" placeholder="Email" required>
                         
-                            <button type="submit">Send</button>
+                            <button onclick="close" type="submit">Send</button>
                         </form>
                         </div>
                       </div>
@@ -1811,11 +1877,17 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwZNhjfiFmYRzMjQF84k9Ob1KsDw8tFchLVqcKNzkxh7OQTTNjRMzUz9PY0vrEjK2UUIw/exec'
 
     const form = document.forms['submit-to-google-sheet']
-  
+    var closeBtn = document.getElementsByClassName("close")[0];
     form.addEventListener('submit', e => {
       e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
+      fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(form)})
+        .then(
+            response => console.log('Success!', response),
+            popup.style.display = "none"
+
+        )
         .catch(error => console.error('Error!', error.message))
     })
   </script>
