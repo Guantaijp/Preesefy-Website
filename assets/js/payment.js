@@ -293,10 +293,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 const emailSubject = 'New Payment Received';
                 sendEmail(orderData.email, emailSubject, orderData, cryptoData);
             }
+
+            redirectToIndex();
         } else {
             console.error('No order data found.');
         }
     });
+
+    // Function to handle redirection to index.html
+function redirectToIndex() {
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 5000); // Delay of 2 seconds before redirecting (optional)
+}
 
     // Copy wallet address to clipboard
     window.copyToClipboard = function () {
