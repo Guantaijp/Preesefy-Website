@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `;
 
           // Send the email
-          emailjs.send('service_f4okvuy', 'template_oq8oz6n', {
+          emailjs.send('service_a3dhgbw', 'template_oq8oz6n', {
               to_email: to,
               client_name: orderData.name || 'N/A',
               cryptocurrency: orderData.cryptocurrency || 'Not specified',
