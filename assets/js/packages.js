@@ -79,19 +79,19 @@ document.addEventListener("DOMContentLoaded", function() {
             link: "checkout.html",
             description: "Publish your press release on DIGITALJOURNAL.COM, a leader in digital news, and connect with 561,900 tech-savvy readers looking for the latest trends."
         },
-        {
-            name: "NEWSMAX.COM",
-            visitors: "91.96M Visitors",
-            imgSrc: "assets/images/packages/newsmax.jpeg",
-            pricing: {
-                "1 PR": 40,
-                "5 PR": 175,
-                "10 PR": 300
-            },
-            website: "https://www.newsmax.com",
-            link: "checkout.html",
-            description: "Feature your press release on NEWSMAX.COM, a leading conservative news outlet, and tap into a massive audience of 91.96 million engaged readers."
-        },
+        // {
+        //     name: "NEWSMAX.COM",
+        //     visitors: "91.96M Visitors",
+        //     imgSrc: "assets/images/packages/newsmax.jpeg",
+        //     pricing: {
+        //         "1 PR": 40,
+        //         "5 PR": 175,
+        //         "10 PR": 300
+        //     },
+        //     website: "https://www.newsmax.com",
+        //     link: "checkout.html",
+        //     description: "Feature your press release on NEWSMAX.COM, a leading conservative news outlet, and tap into a massive audience of 91.96 million engaged readers."
+        // },
         {
             name: "BARCHART.COM",
             visitors: "7.359M Visitors",
@@ -130,6 +130,32 @@ document.addEventListener("DOMContentLoaded", function() {
             website: "https://www.streetinsider.com",
             link: "checkout.html",
             description: "Get your press release on STREETINSIDER.COM, a key resource for breaking financial news, and connect with 571,073 market-focused readers for targeted exposure."
+        },
+        {
+            name: "300 GENERAL NEWS OUTLETS",
+            visitors: "",
+            imgSrc: "assets/images/packages/street.jpeg",
+            pricing: {
+                "1 PR": 40,
+                "5 PR": 175,
+                "10 PR": 300
+            },
+            website: "https://www.streetinsider.com",
+            link: "checkout.html",
+            description: "Distribute your press release to 300 general news outlets for broad coverage and maximum exposure across various audiences, enhancing your brand visibility on a large scale."
+        },
+        {
+            name: "200 GENERAL NEWS OUTLETS",
+            visitors: "",
+            imgSrc: "assets/images/packages/street.jpeg",
+            pricing: {
+                "1 PR": 25,
+                "5 PR": 100,
+                "10 PR": 180
+            },
+            website: "https://www.streetinsider.com",
+            link: "checkout.html",
+            description: "Reach 200 general news outlets with your press release to connect with diverse audiences, offering substantial exposure and engagement with over 571,073 market-focused readers."
         }
     ];
     
