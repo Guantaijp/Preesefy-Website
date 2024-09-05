@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "300 GENERAL NEWS OUTLETS",
             visitors: "",
-            imgSrc: "assets/images/packages/street.jpeg",
+            imgSrc: "assets/images/packages/300.jpeg",
             pricing: {
                 "1 PR": 40,
                 "5 PR": 175,
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "200 GENERAL NEWS OUTLETS",
             visitors: "",
-            imgSrc: "assets/images/packages/street.jpeg",
+            imgSrc: "assets/images/packages/200.jpeg",
             pricing: {
                 "1 PR": 25,
                 "5 PR": 100,
