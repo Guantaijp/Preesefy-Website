@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "101.5M Visitors",
             imgSrc: "assets/images/packages/insider.jpeg",
             pricing: {
-                "1 PR": 180,
-                "5 PR": 800,
-                "10 PR": 1400
+                "1 PR": 200,
+                "5 PR": 900,
+                "10 PR": 1600
             },
             website: "https://www.businessinsider.com",
             link: "checkout.html",
@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "31.02M Visitors",
             imgSrc: "assets/images/packages/benzinga2.jpeg",
             pricing: {
-                "1 PR": 55,
-                "5 PR": 250,
-                "10 PR": 450
+                "1 PR": 70,
+                "5 PR":300,
+                "10 PR": 550
             },
             website: "https://www.benzinga.com",
             link: "checkout.html",
@@ -110,9 +110,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "5.643M Visitors",
             imgSrc: "assets/images/packages/asiaone.jpeg",
             pricing: {
-                "1 PR": 55,
-                "5 PR": 250,
-                "10 PR": 450
+                "1 PR": 75,
+                "5 PR": 325,
+                "10 PR": 600
             },
             website: "https://www.asiaone.com",
             link: "checkout.html",
