@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "101.5M Visitors",
             imgSrc: "assets/images/packages/insider.jpeg",
             pricing: {
-                "1 PR": 200,
-                "5 PR": 900,
-                "10 PR": 1600
+                "1 PR": 220,
+                "5 PR": 1000,
+                "10 PR": 1200
             },
             website: "https://www.businessinsider.com",
             link: "checkout.html",
@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "31.02M Visitors",
             imgSrc: "assets/images/packages/benzinga2.jpeg",
             pricing: {
-                "1 PR": 70,
-                "5 PR":300,
+                "1 PR": 100,
+                "5 PR":400,
                 "10 PR": 550
             },
             website: "https://www.benzinga.com",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "355.6M Visitors",
             imgSrc: "assets/images/packages/ap.jpeg",
             pricing: {
-                "1 PR": 90,
+                "1 PR": 120,
                 "5 PR": 400,
                 "10 PR": 700
             },
@@ -105,25 +105,25 @@ document.addEventListener("DOMContentLoaded", function() {
             link: "checkout.html",
             description: "Enhance your visibility in the financial sector by publishing your press release on BARCHART.COM, a trusted source for market data, reaching 7.359 million investors."
         },
-        {
-            name: "ASIAONE.COM",
-            visitors: "5.643M Visitors",
-            imgSrc: "assets/images/packages/asiaone.jpeg",
-            pricing: {
-                "1 PR": 75,
-                "5 PR": 325,
-                "10 PR": 600
-            },
-            website: "https://www.asiaone.com",
-            link: "checkout.html",
-            description: "Increase your brand's reach in Asia by publishing your press release on ASIAONE.COM, a leading news portal in the region, connecting with 5.643 million readers."
-        },
+        // {
+        //     name: "ASIAONE.COM",
+        //     visitors: "5.643M Visitors",
+        //     imgSrc: "assets/images/packages/asiaone.jpeg",
+        //     pricing: {
+        //         "1 PR": 75,
+        //         "5 PR": 325,
+        //         "10 PR": 600
+        //     },
+        //     website: "https://www.asiaone.com",
+        //     link: "checkout.html",
+        //     description: "Increase your brand's reach in Asia by publishing your press release on ASIAONE.COM, a leading news portal in the region, connecting with 5.643 million readers."
+        // },
         {
             name: "STREETINSIDER.COM",
             visitors: "571,073 Visitors",
             imgSrc: "assets/images/packages/street.jpeg",
             pricing: {
-                "1 PR": 45,
+                "1 PR": 50,
                 "5 PR": 200,
                 "10 PR": 350
             },
