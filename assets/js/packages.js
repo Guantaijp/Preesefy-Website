@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "Thailand News Network",
             visitors: "",
-            imgSrc: "assets/images/packages/newsmax.jpeg",
+            imgSrc: "assets/images/packages/",
             pricing: {
                 "1 PR": 120,
                 "5 PR": 500,
