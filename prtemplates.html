@@ -120,6 +120,7 @@
                             <li><a href="index.html" title="">Home</a></li>
                             <li><a href="ppm-services.html" title="">About us</a></li>
                             <li><a href="index.html#packages" title="">Packages</a></li>
+                              <li><a href="team.html" title="">Team</a></li>
                             <li><a href="content-elements.html" title="">Guide</a></li>
                             <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
                             <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Home</a>
@@ -229,6 +230,7 @@
                             <li><a href="index.html" title="">Home</a></li>
                             <li><a href="ppm-services.html" title="">About us</a></li>
                             <li><a href="index.html#packages" title="">Packages</a></li>
+                              <li><a href="team.html" title="">Team</a></li>
                             <li><a href="content-elements.html" title="">Guide</a></li>
                             <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
                         <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Pages</a>
@@ -394,6 +396,7 @@
                 <li><a href="index.html" title="">Home</a></li>
                 <li><a href="ppm-services.html" title="">About us</a></li>
                 <li><a href="index.html#packages" title="">Packages</a></li>
+                  <li><a href="team.html" title="">Team</a></li>
                 <li><a href="content-elements.html" title="">Guide</a></li>
                 <li><a href="content-elements.html#prtemplate" title="">PR Templates</a></li>
                 <!-- <li class="menu-item-has-children"><a href="javascript:void(0);" title="">Home</a>
@@ -804,8 +807,11 @@ function createToggleItems() {
         const pdfPath = document.getElementById('pdfPath').value;
 
         if (name && email) {
-            // Call sendEmail function to send the email
-            sendEmail(name, email, pdfPath);
+              // After sending email, download the PDF
+                window.location.href = pdfPath;
+
+                // Close the popup
+                document.getElementById('downloadPopup').style.display = 'none';
         } else {
             alert('Please enter both your name and email.');
         }

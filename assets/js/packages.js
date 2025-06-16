@@ -1,6 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     const packages = [
+         {
+            name: "Premium PR Package",
+            visitors: "",
+            imgSrc: "assets/images/packages/premium.jpg",
+            pricing: {
+                "1 PR": 499,
+                "5 PR": 2250,
+                "10 PR": 4000
+            },
+            website: "",
+            link: "checkout.html",
+            description: "Boost visibility through a powerful bundle featuring high-authority platforms like Business Insider (DA 94), APNews (DA 92), Benzinga (DA 88), and more — designed for elite global exposure."
+        },
         {
             name: "MSN.COM",
             visitors: "588.2M Visitors",
@@ -79,19 +92,45 @@ document.addEventListener("DOMContentLoaded", function() {
             link: "checkout.html",
             description: "Publish your press release on DIGITALJOURNAL.COM, a leader in digital news, and connect with 561,900 tech-savvy readers looking for the latest trends."
         },
-        // {
-        //     name: "NEWSMAX.COM",
-        //     visitors: "91.96M Visitors",
-        //     imgSrc: "assets/images/packages/newsmax.jpeg",
-        //     pricing: {
-        //         "1 PR": 40,
-        //         "5 PR": 175,
-        //         "10 PR": 300
-        //     },
-        //     website: "https://www.newsmax.com",
-        //     link: "checkout.html",
-        //     description: "Feature your press release on NEWSMAX.COM, a leading conservative news outlet, and tap into a massive audience of 91.96 million engaged readers."
-        // },
+        {
+            name: "Yahoo + MarketWatch",
+            visitors: "",
+            imgSrc: "assets/images/packages/yahoo.jpg",
+            pricing: {
+                "1 PR": 400,
+                "5 PR": 1800,
+                "10 PR": 3500  
+                      },
+            website: "",
+            link: "checkout.html",
+            description: "Share your news across Yahoo and MarketWatch, two top-tier financial platforms known for their influence among investors and professionals."
+        },
+        {
+            name: "Macau News Media",
+            visitors: "",
+            imgSrc: "assets/images/packages/macau.jpg",
+            pricing: {
+                "1 PR": 100,
+                "5 PR": 425,
+                "10 PR": 750  
+                      },
+            website: "",
+            link: "checkout.html",
+            description: "Target regional readers in Asia via Macau-based news outlets, a valuable option for local market engagement."
+        },
+        {
+            name: "Thailand News Network",
+            visitors: "",
+            imgSrc: "assets/images/packages/newsmax.jpeg",
+            pricing: {
+                "1 PR": 120,
+                "5 PR": 500,
+                "10 PR": 900  
+                      },
+            website: "",
+            link: "checkout.html",
+            description: "Expand your brand into Thailand and Southeast Asia through this network of trusted local news site"
+        },
         {
             name: "BARCHART.COM",
             visitors: "7.359M Visitors",
