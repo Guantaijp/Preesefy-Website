@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "101.5M Visitors",
             imgSrc: "assets/images/packages/insider.jpeg",
             pricing: {
-                "1 PR": 220,
-                "5 PR": 1000,
-                "10 PR": 1200
+                "1 PR": 280,
+                "5 PR": 1300,
+                "10 PR": 2500
             },
             website: "https://www.businessinsider.com",
             link: "checkout.html",
@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "31.02M Visitors",
             imgSrc: "assets/images/packages/benzinga2.jpeg",
             pricing: {
-                "1 PR": 100,
-                "5 PR":400,
-                "10 PR": 550
+                "1 PR": 150,
+                "5 PR":600,
+                "10 PR": 1000
             },
             website: "https://www.benzinga.com",
             link: "checkout.html",
@@ -175,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "",
             imgSrc: "assets/images/packages/300.jpeg",
             pricing: {
-                "1 PR": 40,
-                "5 PR": 175,
-                "10 PR": 300
+                "1 PR": 70,
+                "5 PR": 325,
+                "10 PR": 600
             },
             website: "https://www.streetinsider.com",
             link: "checkout.html",
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "",
             imgSrc: "assets/images/packages/200.jpeg",
             pricing: {
-                "1 PR": 25,
+                "1 PR": 35,
                 "5 PR": 100,
                 "10 PR": 180
             },
