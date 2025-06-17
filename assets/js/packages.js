@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
             visitors: "14.79M Visitors",
             imgSrc: "assets/images/packages/globe2.jpeg",
             pricing: {
-                "1 PR": 100,
-                "5 PR": 450,
-                "10 PR": 800
+                "1 PR": 160,
+                "5 PR": 700,
+                "10 PR": 1350
             },
             website: "https://www.theglobeandmail.com",
             link: "checkout.html",
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             name: "Thailand News Network",
             visitors: "",
-            imgSrc: "assets/images/packages/",
+            imgSrc: "assets/images/packages/thailand.jpg",
             pricing: {
                 "1 PR": 120,
                 "5 PR": 500,
