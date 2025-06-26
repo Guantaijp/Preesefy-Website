@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             website: "https://www.theglobeandmail.com",
             link: "checkout.html",
-            description: "Feature your press release on THEGLOBEANDMAIL.COM, Canada’s most trusted newspaper, and connect with 14.79 million readers to elevate your brand in the Canadian market."
+            description: "Feature your press release on THEGLOBEANDMAIL.COM, Canada's most trusted newspaper, and connect with 14.79 million readers to elevate your brand in the Canadian market."
         },
         {
             name: "BUSINESSINSIDER.COM",
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <option value="5 PR">$${pkg.pricing["5 PR"].toLocaleString()} - 5 PR</option>
                         <option value="10 PR">$${pkg.pricing["10 PR"].toLocaleString()} - 10 PR</option>
                     </select>
-                    <a class="thm-btn brd-btn rounded-pill d-inline-block order-now-btn" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
+                    <a class="thm-btn brd-btn rounded-pill d-inline-block add-to-cart-btn" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="javascript:void(0);" title="">Add to Cart</a>
                 </div>
             </div>
         `;
@@ -230,14 +230,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const selectElement = packageElement.querySelector('.form-select');
         const selectedOptionSpan = packageElement.querySelector('.selected-option');
-        const orderNowBtn = packageElement.querySelector('.order-now-btn');
+        const addToCartBtn = packageElement.querySelector('.add-to-cart-btn');
 
         selectElement.addEventListener('change', function() {
             const selectedValue = selectElement.value;
             selectedOptionSpan.textContent = `Selected: $${pkg.pricing[selectedValue].toLocaleString()} - ${selectedValue}`;
         });
 
-        orderNowBtn.addEventListener('click', function(e) {
+        addToCartBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const selectedValue = selectElement.value;
             const selectedPackage = {
@@ -245,10 +245,36 @@ document.addEventListener("DOMContentLoaded", function() {
                 visitors: pkg.visitors,
                 pricing: pkg.pricing[selectedValue], // Store as number
                 imgSrc: pkg.imgSrc,
-                description: pkg.description
+                description: pkg.description,
+                option: selectedValue
             };
-            localStorage.setItem('selectedPackage', JSON.stringify(selectedPackage));
-            window.location.href = pkg.link;
+            
+            // Get existing cart items or initialize empty array
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // Add the new item to cart
+            cartItems.push(selectedPackage);
+            
+            // Store updated cart in localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            
+            // Optional: Show confirmation message
+            alert('Item added to cart!');
+            
+            // Optional: Update cart counter if you have one
+            updateCartCounter();
         });
     });
+    
+    // Function to update cart counter (optional)
+    function updateCartCounter() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartCounter = document.getElementById('cart-counter');
+        if (cartCounter) {
+            cartCounter.textContent = cartItems.length;
+        }
+    }
+    
+    // Initialize cart counter on page load
+    updateCartCounter();
 });
