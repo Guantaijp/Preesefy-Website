@@ -198,6 +198,47 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     ];
     
+    // Create notification element
+    function createNotification() {
+        const notification = document.createElement('div');
+        notification.id = 'cart-notification';
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        `;
+        document.body.appendChild(notification);
+        return notification;
+    }
+
+    // Show notification function
+    function showNotification(message) {
+        let notification = document.getElementById('cart-notification');
+        if (!notification) {
+            notification = createNotification();
+        }
+        
+        notification.textContent = message;
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+        }, 3000);
+    }
 
     const packagesList = document.getElementById('packages-list');
 
@@ -258,10 +299,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Store updated cart in localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             
-            // Optional: Show confirmation message
-            alert('Item added to cart!');
+            // Show notification instead of alert
+            showNotification(`${pkg.name} added to cart!`);
             
-            // Optional: Update cart counter if you have one
+            // Update cart counter
             updateCartCounter();
         });
     });
