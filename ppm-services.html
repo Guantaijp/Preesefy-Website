@@ -20,6 +20,163 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .w-100 { width: 100%; }
+        .pt-50 { padding-top: 50px; }
+        .pb-120 { padding-bottom: 120px; }
+        .position-relative { position: relative; }
+        .mb-0 { margin-bottom: 0; }
+        .mb-2 { margin-bottom: 15px; }
+        
+        .sec-title h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .btm-ln {
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 20px 0;
+        }
+        
+        /* .toggle {
+            margin-top: 40px;
+        }
+        
+        .toggle-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .toggle-item h4 {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 0;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            border: none;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+        
+        .toggle-item h4:hover {
+            background-color: #e9ecef;
+        }
+        
+        .toggle-item h4 i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .toggle-item h4 i::before {
+            content: '+';
+            font-style: normal;
+            font-size: 20px;
+            color: #007bff;
+        }
+        
+        .toggle-item.active h4 i::before {
+            content: '−';
+        }
+        
+        .toggle-content {
+            display: none;
+            padding: 20px;
+            background: white;
+        }
+        
+        .toggle-item.active .toggle-content {
+            display: block;
+        }
+        
+        .toggle-content p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .toggle-content p:last-child {
+            margin-bottom: 0;
+        } */
+        
+        .terms-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .terms-section h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        .terms-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .terms-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .terms-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .term-number {
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        .term-text {
+            flex: 1;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
 <main>
     <header class="style1 w-100">
         <div class="topbar bg-color4 w-100">
@@ -604,16 +761,13 @@
             <div class="container">
                 <div class="crtv-chlng-psn-wrap position-relative w-100">
                     <div class="row w-100">
-                        <!-- <div class="col-md-12 col-sm-12 col-lg-6 order-lg-1">
-                            <div class="mckp-img text-center tilt w-100" data-max_tilt="10" data-perspective="1000" data-scale="1" data-speed="700"><img class="img-fluid" src="assets/images/resources/crtv-chlng-psn-mckp.png" alt="Creative Challenges Passion Mockup" height="473" width="523"></div>
-                        </div> -->
                         <div class="">
                             <div class="text-box w-100">
                                 <div class="sec-title w-100 position-relative">
                                     <h2 class="mb-0">FREQUENTLY ASKED <br> QUESTIONS</h2>
                                     <i class="btm-ln bg-color3"></i>
                                 </div><!-- Sec Title -->
-                                <!-- <p class="mb-0">Sed tristique elementum augue, eu egestas est iaculis eget. <br> Quisque lectus felis, iaculis eget fermentum id, eleifend vel</p> -->
+                                
                                 <div class="toggle schm-14 w-100" id="toggle">
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Why Should I Choose Pressefy for Publishing My Article?</h4>
@@ -621,38 +775,105 @@
                                             <p class="mb-0">Pressefy provides a seamless way to get your news stories featured on some of the most prominent and influential news platforms. We give you access to a wide network of sites that are often difficult and expensive to reach on your own. Our team of skilled writers produces SEO-optimized content that effectively promotes your brand and engages a broader audience. With Pressefy, you can expect a hassle-free publishing experience, backed by our dedicated team, all at a price that offers excellent value.</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>What Is the Expected Turnaround Time for Your Service?</h4>
                                         <div class="toggle-content w-100">
                                             <p class="mb-2">Our typical turnaround time is about 7 business days, though this may vary depending on the package you select. Detailed delivery times are provided on our order form.</p>
-                                         
                                             <p class="mb-2">Writing Packages: Your news story is usually completed within 2-3 days of your order, with revisions typically handled within 24 hours.</p>
-
                                             <p class="mb-2">Publishing Packages: The entire process, from order placement to final report delivery, generally takes around 5 business days.</p>
-
                                             <p class="mb-2">If the submitted content does not meet our writing standards, there may be delays. Additionally, opting for Publishing Add-ons can extend the processing time by 1-4 business days, depending on the add-on.</p>
-
-
                                         </div>
                                     </div>
+                                    
                                     <div class="toggle-item position-relative w-100">
-                                        <h4 class="mb-0 position-relative"><i></i>Can I Make Edits to an Article After It’s Published?</h4>
+                                        <h4 class="mb-0 position-relative"><i></i>Can I Make Edits to an Article After It's Published?</h4>
                                         <div class="toggle-content w-100">
-                                            <p class="mb-0">No, once an article is published, it cannot be edited. It’s important to thoroughly review the article we provide and ensure that any content you submit is fully ready for publication.</p>
+                                            <p class="mb-0">Once published, changes to the content are subject to the media outlet's policies. Most platforms may not allow edits after publication. It's important to thoroughly review the article we provide and ensure that any content you submit is fully ready for publication.</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>Do You Utilize AI Tools for Writing Articles?</h4>
                                         <div class="toggle-content w-100">
                                             <p class="mb-0">No, our articles are written by experienced human writers. Pressefy follows a strict policy against using AI platforms like ChatGPT, ensuring that all content is created with a personal touch by our skilled team.</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="toggle-item position-relative w-100">
                                         <h4 class="mb-0 position-relative"><i></i>What Are the Image Specifications for Submission?</h4>
                                         <div class="toggle-content w-100">
                                             <p class="mb-0">Given that news outlets often compress and resize images, we recommend submitting high-resolution images without text to maintain the best quality in the final publication.</p>
                                         </div>
                                     </div>
+                                    
+                                    <div class="toggle-item position-relative w-100">
+                                        <h4 class="mb-0 position-relative"><i></i>What Payment Methods Do You Accept?</h4>
+                                        <div class="toggle-content w-100">
+                                            <p class="mb-0">We accept payments in BTC, ETH, and USDT only. Full payment is required in advance to initiate the distribution process.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="toggle-item position-relative w-100">
+                                        <h4 class="mb-0 position-relative"><i></i>What If a Media Outlet Rejects My Content?</h4>
+                                        <div class="toggle-content w-100">
+                                            <p class="mb-0">If a media outlet rejects or fails to publish the content, we will provide a suitable replacement with similar reach and credibility. Media replacements are subject to availability and will be selected to match similar traffic and pricing.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="toggle-item position-relative w-100">
+                                        <h4 class="mb-0 position-relative"><i></i>How Will I Know My Article Was Published?</h4>
+                                        <div class="toggle-content w-100">
+                                            <p class="mb-0">A live URL or screenshot will be provided as proof of publication once the press release goes live.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Terms & Conditions Section -->
+                                <div class="terms-section">
+                                    <h3>Terms & Conditions</h3>
+                                    <ul class="terms-list">
+                                        <li>
+                                            <div class="term-number">1</div>
+                                            <div class="term-text">If a media outlet rejects or fails to publish the content, we will provide a suitable replacement with similar reach and credibility.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">2</div>
+                                            <div class="term-text">Full payment is required in advance to initiate the distribution process.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">3</div>
+                                            <div class="term-text">In cases where a selected media outlet delays or becomes unresponsive, we reserve the right to substitute it with an equivalent option to ensure timely delivery.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">4</div>
+                                            <div class="term-text">Refund or cancellation requests will not be accepted after 24 hours from the time of payment.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">5</div>
+                                            <div class="term-text">Media replacements are subject to availability and will be selected to match similar traffic and pricing.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">6</div>
+                                            <div class="term-text">Media prices are not fixed and may vary. Please message us to confirm the latest pricing before placing an order.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">7</div>
+                                            <div class="term-text">A live URL or screenshot will be provided as proof of publication once the press release goes live.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">8</div>
+                                            <div class="term-text">Once published, changes to the content are subject to the media outlet's policies. Most platforms may not allow edits after publication.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">9</div>
+                                            <div class="term-text"><strong>Third-Party Responsibility:</strong> We are not responsible for the removal, editing, or archiving of published content by the media outlet after publication.</div>
+                                        </li>
+                                        <li>
+                                            <div class="term-number">10</div>
+                                            <div class="term-text">We accept payments in BTC, ETH, and USDT only.</div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

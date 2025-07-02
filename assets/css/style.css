@@ -2120,7 +2120,7 @@ body.slidein .responsive-menu {
 }
 .text-box ul:not(.fact-list) li:before,
 .liststyle1 li:before {
-  content: "\f107";
+  /* content: "\f107"; */
   font-family: "Flaticon";
   position: absolute;
   left: 0;
