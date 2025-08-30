@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="icon" href="assets/images/origina.png" sizes="32x32" type="image/png">
+    <title>Pressefy Team Verification - Verify Pressefy Team Members</title>
+
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/aos.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Revolution Style Sheets -->
+    <link rel="stylesheet" href="assets/css/revolution/settings.css">
+    <!-- Revolution Layers Styles -->
+    <link rel="stylesheet" href="assets/css/revolution/layers.css">
+    <!-- Revolution Navigation Styles -->
+    <link rel="stylesheet" href="assets/css/revolution/navigation.css">
+    
+    <style>
+        /* Team Verification Styles */
+        .team-verification-container {
+            padding: 60px 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-verification-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .team-verification-container p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        
+        .search-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .search-box select, .search-box input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .search-box select {
+            width: 180px;
+        }
+        
+        .search-box input {
+            width: 300px;
+        }
+        
+        .search-box button {
+            padding: 12px 25px;
+            background-color: #4e6ef2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .search-box button:hover {
+            background-color: #3a56d4;
+        }
+        
+        .search-box button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .result {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            min-height: 200px;
+        }
+        
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .member-info h3 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .member-info p {
+            margin: 0;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .verification-status {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .verified {
+            background-color: #e6f7ee;
+            color: #28a745;
+        }
+        
+        .not-verified {
+            background-color: #fde8e8;
+            color: #dc3545;
+        }
+        
+        .no-result {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<main>
+   <header class="style1 w-100">
+        <div class="topbar bg-color4 w-100">
+            <div class="container">
+                <div class="topbar-inner d-flex flex-wrap align-items-center justify-content-between w-100">
+                    <ul class="top-info-links d-inline-flex flex-wrap align-items-center list-unstyled mb-0">
+                        <li><i class="flaticon-email"></i><a href="mailto:partners@pressefy.com" title="">partners@pressefy.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- Topbar -->
+        <div class="menubar w-100">
+            <div class="container">
+                <div class="menubar-inner d-flex flex-wrap align-items-center justify-content-between w-100">
+                    <div class="logo"><h1 class="mb-0"><a href="index.html" title="Home"><img width="185" src="assets/images/origina.png" alt="Logo"></a></h1></div><!-- Logo -->
+                    <nav>
+                        <ul class="d-inline-flex flex-wrap align-items-center mb-0 list-unstyled">
+                             <li><a href="/" title="">Home</a></li>
+                            <li><a href="ppm-services.html" title="">About us</a></li>
+                            <li><a href="index.html#packages" title="">Packages</a></li>
+                            <li><a href="team.html" title="">Team</a></li>
+                            <li><a href="content-elements.html" title="">Guide</a></li>
+                            <li><a href="prtemplates.html" title="">PR Templates</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-btns d-inline-flex flex-wrap align-items-center">
+                        <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a>
+                    </div>
+                    <div id="emailPopup" class="popup">
+                        <div class="popup-content">
+                          <span class="close">&times;</span>
+                          <h2>Order Status</h2>
+                          <p>Please fill the your email to get your order status:</p>
+                           <form name="submit-to-google-sheet">
+                            <input name="email" type="email" placeholder="Email" required>
+                            <button onclick="close" type="submit">Send</button>
+                        </form>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div><!-- Menubar -->
+    </header><!-- Header -->
+    <div class="sticky-header style1 w-100">
+        <div class="container">
+            <div class="menubar-inner d-flex flex-wrap align-items-center justify-content-between w-100">
+                <div class="logo"><h1 class="mb-0"><a href="index.html" title="Home"><img width="185" src="assets/images/origina.png" alt="Logo"></a></h1></div><!-- Logo -->
+                <nav>
+                    <ul class="d-inline-flex flex-wrap align-items-center mb-0 list-unstyled">
+                        <li><a href="index.html" title="">Home</a></li>
+                        <li><a href="ppm-services.html" title="">About us</a></li>
+                        <li><a href="index.html#packages" title="">Packages</a></li>
+                        <li><a href="team.html" title="">Team</a></li>
+                        <li><a href="content-elements.html" title="">Guide</a></li>
+                        <li><a href="prtemplates.html" title="">PR Templates</a></li>
+                    </ul>
+                </nav>
+                <div class="header-btns d-inline-flex flex-wrap align-items-center">
+                    <a class="d-inline-block" href="#" title="Order status" id="orderStatusLink">Order status</a>
+                </div>
+            </div>
+        </div>
+    </div><!-- Sticky Header -->
+    <div class="header-search d-flex flex-wrap justify-content-center align-items-center w-100">
+        <span class="search-close-btn"><i class="flaticon-delete"></i></span>
+        <form>
+            <input type="text" placeholder="Search">
+        </form>
+    </div><!-- Header Search -->
+    <div class="responsive-header position-relative w-100">
+        <div class="responsive-topbar w-100">
+            <div class="container d-flex flex-wrap align-items-center justify-content-between">
+                <div class="logo"><h1 class="mb-0"><a href="index.html" title="Home"><img class="img-fluid" src="assets/images/origina.png" alt="Logo"></a></h1></div><!-- Logo -->
+                <div class="header-btns d-inline-flex flex-wrap align-items-center">
+                    <a class="res-menu-btn d-inline-block" href="javascript:void(0);" title=""><i class="fas fa-align-justify"></i></a>
+                </div>
+            </div>
+        </div><!-- Responsive Topbar -->
+        <div class="responsive-menu w-100">
+            <div class="logo"><h1 class="mb-0"><a href="index.html" title="Home"><img class="img-fluid" src="assets/images/logo@2x.png" alt="Logo"></a></h1></div><!-- Logo -->
+            <ul class="mb-0 list-unstyled w-100">
+                <li><a href="index.html" title="">Home</a></li>
+                <li><a href="ppm-services.html" title="">About us</a></li>
+                <li><a href="index.html#packages" title="">Packages</a></li>
+                <li><a href="team.html" title="">Team</a></li>
+                <li><a href="content-elements.html" title="">Guide</a></li>
+                <li><a href="prtemplates.html" title="">PR Templates</a></li>
+            </ul>
+        </div><!-- Responsive Menu -->
+    </div><!-- Responsive Header -->
+
+    <!-- Page Title Section -->
+    <section>
+        <div class="w-100 position-relative">
+            <div class="pg-title-wrap pt-190 pb-80 position-relative w-100 mouse_anim scroll_anim">
+                <img data-depth="0.80" class="pg-ttl-shp-img img-fluid position-absolute" src="assets/images/ttl-bg-shp.png" alt="Title Background Shape" height="329" width="1920">
+                <div class="container">
+                    <div class="pg-title-inner text-center position-relative w-100">
+                        <h1>Team Verification <i class="btm-ln v2 bg-color9"></i></h1>
+                        <ol class="breadcrumb d-inline-flex justify-content-center align-items-center flex-wrap">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Team Verification</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- Page Title Wrap -->
+        </div>
+    </section>
+
+    <!-- Team Verification Content -->
+    <section>
+        <div class="w-100 pb-100 position-relative">
+            <div class="container">
+                <div class="team-verification-container">
+                    <h2>Pressefy Team Verification</h2>
+                    <p>Verify real Pressefy team identities through official linked social accounts and engage confidently.</p>
+                    
+                    <div class="search-box">
+                        <select id="type">
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="email">Email</option>
+                        </select>
+                        <input type="text" id="input" placeholder="Please enter verified ID" oninput="toggleButton()">
+                        <button id="searchBtn" onclick="verify()" disabled>Search</button>
+                    </div>
+                    
+                    <div id="result" class="result">
+                        <div class="no-result">Enter a team member's LinkedIn, Telegram, or email to verify their identity.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="w-100 pt-40 bg-color11 position-relative">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; text-align: center;">
+                <div style="max-width: 600px; width: 100%;">
+                    <div style="text-align: center;">
+                        <h4 style="color: white;">Stay informed with the latest updates and insights from Pressefy Press Wire.</h4>
+                        <div style="margin-top: 20px;margin-bottom: 30px;">
+                            <form name="submit-to-google-sheet-email" class="newsletter position-relative w-100">
+                                <input class="rounded-pill email w-100" type="email" name="email" placeholder="Enter your email" required>
+                                <button type="submit" style="margin-top: 10px;" class="thm-btn d-inline-block rounded-pill position-absolute"><i class="flaticon-telegram"></i></button>
+                                <div class="response w-100"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="bottom-bar bg-color12 w-100">
+        <div class="container">
+            <div class="bottom-inner d-flex flex-wrap align-items-center justify-content-between w-100">
+                <p class="mb-0">Copyright &copy; 2024 — All rights reserved</p>
+                <div>
+                    <a href="#" class="terms-link" data-bs-toggle="modal" data-bs-target="#termsModal">
+                        Terms & Conditions
+                    </a>
+                    <a href="#" class="terms-link" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                        Privacy Policy
+                    </a>
+                    <a href="team-verification.html" class="terms-link">
+                        Team Verification
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>By using our press release distribution service, you agree to the following terms and conditions. Please read them carefully before placing an order.</p>
+                    
+                    <h4>1. Media Outlet Replacement Policy</h4>
+                    <p>If a media outlet rejects or fails to publish the content, we will provide a suitable replacement with similar reach and credibility.</p>
+                    
+                    <h4>2. Payment Terms</h4>
+                    <p>Full payment is required in advance to initiate the distribution process.</p>
+                    
+                    <h4>3. Media Outlet Substitution</h4>
+                    <p>In cases where a selected media outlet delays or becomes unresponsive, we reserve the right to substitute it with an equivalent option to ensure timely delivery.</p>
+                    
+                    <h4>4. Refund and Cancellation Policy</h4>
+                    <p>Refund or cancellation requests will not be accepted after 24 hours from the time of payment.</p>
+                    
+                    <h4>5. Media Replacement Guidelines</h4>
+                    <p>Media replacements are subject to availability and will be selected to match similar traffic and pricing.</p>
+                    
+                    <h4>6. Pricing Policy</h4>
+                    <p>Media prices are not fixed and may vary. Please message us to confirm the latest pricing before placing an order.</p>
+                    
+                    <h4>7. Proof of Publication</h4>
+                    <p>A live URL or screenshot will be provided as proof of publication once the press release goes live.</p>
+                    
+                    <h4>8. Content Modification Policy</h4>
+                    <p>Once published, changes to the content are subject to the media outlet's policies. Most platforms may not allow edits after publication.</p>
+                    
+                    <h4>9. Third-Party Responsibility</h4>
+                    <p>We are not responsible for the removal, editing, or archiving of published content by the media outlet after publication.</p>
+                    
+                    <h4>10. Accepted Payment Methods</h4>
+                    <p>We accept payments in BTC, ETH, and USDT only.</p>
+                    
+                    <h4>Acceptance of Terms</h4>
+                    <p>By placing an order with our service, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.</p>
+                    
+                    <p><strong>Last updated:</strong> July 2025</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Information We Collect</h4>
+                    <p>We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.</p>
+                    
+                    <h4>How We Use Your Information</h4>
+                    <p>We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you.</p>
+                    
+                    <h4>Information Sharing</h4>
+                    <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy.</p>
+                    
+                    <h4>Data Security</h4>
+                    <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                    
+                    <h4>Contact Us</h4>
+                    <p>If you have questions about this Privacy Policy, please contact us at privacy@yourwebsite.com</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main><!-- Main Wrapper -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/aos.min.js"></script>
+<script src="assets/js/counterup.min.js"></script>
+<script src="assets/js/particles.min.js"></script>
+<script src="assets/js/tilt.jquery.min.js"></script>
+<script src="assets/js/jquery.fancybox.min.js"></script>
+<script src="assets/js/perfect-scrollbar.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/scroll-up-bar.min.js"></script>
+<script src="assets/js/custom-scripts.js"></script>
+<!--Verification Scripts -->
+<script src="assets/js/team-verification.js"></script>
+</body>
+</html>
