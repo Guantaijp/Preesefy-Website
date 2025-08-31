@@ -27,6 +27,14 @@
       'krishnagope.nca@gmail.com',
       'krishna.mediaxwire@gmail.com',
 
+      'arpita.mediaxwire@gmail.com',
+
+      'arpita.newscoverage.agency@gmail.com',
+
+      'arpita.pressefy@gmail.com',
+
+      'rani.pressefy@gmail.com',
+
       'babanmahato.nca@gmail.com',
       'baban.mediaxwire@gmail.com',
       'baban.pressefy@gmail.com',
