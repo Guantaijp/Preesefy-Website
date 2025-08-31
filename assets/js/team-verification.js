@@ -34,6 +34,8 @@
       'arpita.pressefy@gmail.com',
 
       'rani.pressefy@gmail.com',
+      'Raniroy_nca@gmail.com',
+      'raniroy.nca@gmail.com',
 
       'babanmahato.nca@gmail.com',
       'baban.mediaxwire@gmail.com',
