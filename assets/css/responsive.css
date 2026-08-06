@@ -39,7 +39,7 @@
 
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 1400px) {
 header,
 header.d-flex,
 .sticky-header {display: none !important;}

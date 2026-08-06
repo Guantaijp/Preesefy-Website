@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     const CAT_VAR = {
-        main: '#e09400',
+        main: '#f2540b',
         regional: '#0fb8a0',
         crypto5: '#7c5cff',
         crypto10: '#3a63e0'
@@ -61,15 +61,15 @@ document.addEventListener("DOMContentLoaded", function() {
         return raw.replace(/^Countries:\s*/, '').split(',').map(s => s.trim()).filter(Boolean);
     }
 
-    // ---- notification (unchanged behavior from previous version) ----
+    // ---- notification: top-center banner, confirms the add with the package name ----
     function createNotification() {
         const notification = document.createElement('div');
         notification.id = 'cart-notification';
         notification.style.cssText = `
-            position: fixed; top: 20px; right: 20px; background: #28a745; color: white;
-            padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 2100; font-size: 14px; font-weight: 500; opacity: 0;
-            transform: translateX(100%); transition: all 0.3s ease;
+            position: fixed; top: 20px; left: 50%; background: #1a7a3c; color: white;
+            padding: 14px 24px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+            z-index: 2100; font-size: 14px; font-weight: 700; opacity: 0; display:flex; align-items:center; gap:10px;
+            transform: translate(-50%, -20px); transition: opacity .25s ease, transform .25s ease; pointer-events:none;
         `;
         document.body.appendChild(notification);
         return notification;
@@ -77,12 +77,17 @@ document.addEventListener("DOMContentLoaded", function() {
     function showNotification(message) {
         let notification = document.getElementById('cart-notification');
         if (!notification) notification = createNotification();
-        notification.textContent = message;
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-        setTimeout(() => {
+        notification.innerHTML = `<span style="font-size:16px;line-height:1">&#10003;</span><span>${message}</span>`;
+        notification.style.opacity = '0';
+        notification.style.transform = 'translate(-50%, -20px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translate(-50%, 0)';
+        }));
+        clearTimeout(notification._hideTimer);
+        notification._hideTimer = setTimeout(() => {
             notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100%)';
+            notification.style.transform = 'translate(-50%, -20px)';
         }, 3000);
     }
     function addToCart(pkg) {
@@ -116,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let pendingCartItem = null;
     function openModal(group, name, price, traffic, reach, cartItem) {
         const color = CAT_VAR[group.key];
+        modalBackdrop.querySelector('.pkg-modal-card').style.setProperty('--dot', color);
         const cat = modalBackdrop.querySelector('#pkgModalCat');
         cat.textContent = group.cat;
         cat.style.color = color;
