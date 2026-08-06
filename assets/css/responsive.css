@@ -3,6 +3,15 @@
 
 }
 
+/* Header nav (logo + 7 items + cart + order-status) fits the 1170px container with
+   ~0px to spare, so it wraps to a second line at the knife's edge. Give it more room. */
+@media (min-width: 1200px){
+  header.style1 .menubar > .container,
+  .sticky-header.style1 > .container{
+    max-width: 1300px;
+  }
+}
+
 @media (max-width: 1925px) {
 
 }
