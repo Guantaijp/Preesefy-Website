@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/packages-custom.css">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Revolution Style Sheets -->
@@ -1762,28 +1763,6 @@ button[type="submit"]:hover {
             </div>
         </div>
     </section>
-    <section id="customized-packages">
-        <div class="w-100 pt-10 pb-130 position-relative">
-            <div class="fixed-bg bg-norepeate back-size-cont back-post-tp" style="background-image: url(assets/images/bg-shp-3.png);"></div>
-            <div class="particles-wrap position-absolute w-100">
-                <div id="particle-3" class="particles-js top_left mx-w25 w-100" data-color="#3E4A59" data-size="90" data-count="1" data-speed="2" data-hide="1200" data-shape="image" data-mode="bounce" data-image-url="assets/images/particle-1.png" data-image-width="150" data-image-height="150">
-                    <canvas></canvas>
-                </div>
-            </div>
-            <div id="custom-packages" class="container">
-                <div class="sec-title text-center w-100 position-relative">
-                    <h2 class="mb-0"><span>Customized 20 PR Packages</span></h2>
-                    <i class="btm-ln bg-color3"></i>
-                </div>
-                <div class="serv-wrap2 position-relative text-center w-100">
-                    <div class="row align-items-center pt-5" id="custom-packages-list">
-                        <!-- Customized packages will be rendered here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <section>
         <div class="w-100 pt-120 grad-bg1 pb-120 position-relative">
             <div class="particles-wrap position-absolute w-100">
@@ -1858,7 +1837,7 @@ button[type="submit"]:hover {
     <div class="bottom-bar bg-color12 w-100">
         <div class="container">
             <div class="bottom-inner d-flex flex-wrap align-items-center justify-content-between w-100">
-                <p class="mb-0">Copyright &copy; 2024 — All rights reserved</p>
+                <p class="mb-0">Copyright &copy; 2026 — All rights reserved</p>
                 <div>
                     <a href="#" class="terms-link" data-bs-toggle="modal" data-bs-target="#termsModal">
                         Terms & Conditions
@@ -2091,80 +2070,6 @@ window.onclick = function(event) {
 
 
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-   
-        const customPackages = [
-    {
-        description: 'Benzinga, Digital Journal, and 300 General Media.',
-        link: "checkout.html",
-        pricing: {
-            "20 PR": "$1,980"
-        }
-    },
-    {
-        description: 'Digital Journal, Street Insider, Benzinga and 300 General Media',
-        link: "checkout.html",
-        pricing: {
-            "20 PR": "$2,580"
-        }
-    },
-    {
-        description: 'Business Insider, APnews, Benzinga, Digital Journal, and 300 General Media.',
-        link: "checkout.html",
-        pricing: {
-            "20 PR": "$5,499"
-        }
-    },
-    {
-        description: 'MSN, Benzinga, Digital Journal, Street Insider, and 300 General Media.',
-        link: "checkout.html",
-        pricing: {
-            "20 PR": "$7,980"
-        }
-    }
-];
-
-
-        const packagesList = document.getElementById('custom-packages-list');
-
-        customPackages.forEach(pkg => {
-            const packageElement = document.createElement('div');
-            packageElement.className = 'col-md-6 col-sm-6 col-lg-3 pb-5';
-            packageElement.innerHTML = `
-    <div class="post-box brd-rd15 w-100" style="display: flex; flex-direction: column; height: 280px;">
-        <div class="post-info w-100" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px;">
-            <p class="mb-3" style="font-size: 14px; height: 100px;">${pkg.description}</p>
-            <p class="mb-3" style="font-size: 20px; font-weight: bold;  " data-price="${pkg.pricing["20 PR"]}">${pkg.pricing["20 PR"]} - 20 PR</p>
-            <a class="thm-btn brd-btn rounded-pill d-inline-block order-now-btn" style="padding-left:10px; padding-right:10px; padding-top: 0px; padding-bottom: 0px;" href="${pkg.link}" title="">Order Now</a>
-        </div>
-    </div>
-`;
-
-            packagesList.appendChild(packageElement);
-        });
-
-        // Add event listener to handle 'Order Now' clicks
-        packagesList.addEventListener('click', function(e) {
-            if (e.target.classList.contains('order-now-btn')) {
-                const packageElement = e.target.closest('.post-box');
-                const priceText = packageElement.querySelector('p[data-price]').getAttribute('data-price');
-                const price = parseFloat(priceText.replace(/[^0-9.-]+/g, "")); // Convert to number
-
-                const selectedPackage = {
-                    description: packageElement.querySelector('p').innerHTML,
-                    link: e.target.href,
-                    pricing: price
-                };
-
-                localStorage.setItem('selectedPackage', JSON.stringify(selectedPackage));
-                window.location.href = e.target.href;
-            }
-        });
-    });
-</script>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
