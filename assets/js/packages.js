@@ -85,17 +85,12 @@ document.addEventListener("DOMContentLoaded", function() {
             notification.style.transform = 'translateX(100%)';
         }, 3000);
     }
-    function updateCartCounter() {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        const cartCounter = document.getElementById('cart-counter');
-        if (cartCounter) cartCounter.textContent = cartItems.length;
-    }
     function addToCart(pkg) {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         cartItems.push(pkg);
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         showNotification(`${pkg.name} added to cart!`);
-        updateCartCounter();
+        if (typeof pressefyRefreshCart === 'function') pressefyRefreshCart();
     }
 
     // ---- modal (built once, appended to body) ----
@@ -126,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cat.style.color = color;
         modalBackdrop.querySelector('#pkgModalTitle').textContent = name;
         modalBackdrop.querySelector('#pkgModalMeta').innerHTML = `
-            <span class="pkg-price-block"><span class="pkg-amt">${price}</span></span>
+            <span class="pkg-price-block" style="--dot:${color}"><span class="pkg-amt">${price}</span></span>
             <span class="pkg-traffic-pill" style="--dot:${color}">${traffic} monthly</span>
         `;
         const tokens = parseReach(reach);
@@ -260,5 +255,5 @@ document.addEventListener("DOMContentLoaded", function() {
         if (active) moveIndicator(active);
     });
 
-    updateCartCounter();
+    if (typeof pressefyRefreshCart === 'function') pressefyRefreshCart();
 });
