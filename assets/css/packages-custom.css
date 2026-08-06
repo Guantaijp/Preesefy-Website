@@ -86,6 +86,7 @@
   box-shadow:0 6px 16px -4px rgba(255,175,0,.5);
 }
 .pkg-cta:hover{filter:brightness(1.06); transform:translateY(-1px); box-shadow:0 10px 22px -4px rgba(255,175,0,.6);}
+.pkg-cta.pkg-cta-added{background:#1a7a3c; color:#fff; box-shadow:0 6px 16px -4px rgba(26,122,60,.5);}
 #packages .pkg-reach-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:2px;}
 #packages .pkg-more-btn{
   font-size:12px; font-weight:800; color:#fff; background:var(--dot); border:1.5px solid var(--dot);

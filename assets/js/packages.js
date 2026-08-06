@@ -90,11 +90,23 @@ document.addEventListener("DOMContentLoaded", function() {
             notification.style.transform = 'translate(-50%, -20px)';
         }, 3000);
     }
-    function addToCart(pkg) {
+    function flashAddedButton(btn) {
+        if (!btn) return;
+        clearTimeout(btn._resetTimer);
+        if (!btn.dataset.originalLabel) btn.dataset.originalLabel = btn.textContent;
+        btn.textContent = '✓ Added!';
+        btn.classList.add('pkg-cta-added');
+        btn._resetTimer = setTimeout(() => {
+            btn.textContent = btn.dataset.originalLabel;
+            btn.classList.remove('pkg-cta-added');
+        }, 1800);
+    }
+    function addToCart(pkg, btn) {
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         cartItems.push(pkg);
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         showNotification(`${pkg.name} added to cart!`);
+        flashAddedButton(btn);
         if (typeof pressefyRefreshCart === 'function') pressefyRefreshCart();
     }
 
@@ -247,7 +259,8 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             const moreBtn = card.querySelector('.pkg-more-btn');
             if (moreBtn) moreBtn.addEventListener('click', () => openModal(group, name, price, traffic, reach, cartItem));
-            card.querySelector('.pkg-cta').addEventListener('click', () => addToCart(cartItem));
+            const cardCtaBtn = card.querySelector('.pkg-cta');
+            cardCtaBtn.addEventListener('click', () => addToCart(cartItem, cardCtaBtn));
             grid.appendChild(card);
         });
 
