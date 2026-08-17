@@ -198,4 +198,29 @@ body.pf-dark .modal-body h1,body.pf-dark .modal-body h2,body.pf-dark .modal-body
 body.pf-dark .modal-body h4,body.pf-dark .modal-body h5,body.pf-dark .modal-body h6{color:#1a1a1a !important}
 body.pf-dark .modal-body p,body.pf-dark .modal-body li,body.pf-dark .modal-body span{color:#444 !important}
 body.pf-dark .modal-body strong{color:#1a1a1a !important}
+
+/* ---------------- cart.js renders the "Cart Totals" box with an inline
+   style="background-color: #f8f9fa" - inline styles beat any external
+   stylesheet rule without !important, so this needs it explicitly */
+body.pf-dark .cart-totals-inner{background:var(--glass) !important;border:1px solid var(--line)}
+body.pf-dark .cart-totals-inner h4{color:var(--hi) !important}
+body.pf-dark .cart-totals-inner span,body.pf-dark .cart-totals-inner strong{color:var(--hi) !important}
+
+/* ---------------- checkout.html's Writing Package / Publishing Package radio
+   picker cards - Bootstrap .form-check radios inside a bordered box, no hover
+   feedback at all by default so they read as inert on a dark background */
+body.pf-dark input[type="radio"],body.pf-dark input[type="checkbox"]{accent-color:var(--teal);cursor:pointer}
+body.pf-dark .form-check{cursor:pointer}
+body.pf-dark .form-check-label{cursor:pointer}
+body.pf-dark .border.p-3.rounded{cursor:pointer;transition:border-color .15s ease,background .15s ease}
+body.pf-dark .border.p-3.rounded:hover{border-color:var(--teal) !important;background:var(--glass)}
+body.pf-dark .form-check-input:checked ~ .form-check-label,
+body.pf-dark .border.p-3.rounded:has(input:checked){border-color:var(--teal) !important;background:var(--glass)}
+
+/* ---------------- payment.html's own bespoke Payment Details card (page-local
+   inline <style>, light grey card by design - kept light, not converted dark) */
+body.pf-dark .payment-details h4{color:#333 !important}
+body.pf-dark .payment-details p{color:#555 !important}
+body.pf-dark .payment-details span{color:#222 !important}
+body.pf-dark .payment-details label{color:#333 !important}
 @media (max-width:480px){ .pf-foot-grid{grid-template-columns:1fr} }
