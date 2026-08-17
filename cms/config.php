@@ -23,14 +23,22 @@ function db(): PDO {
         if ($isNew) {
             $pdo->exec(file_get_contents(CMS_ROOT . '/schema.sql'));
         }
-        migrate($pdo);
+        // migrate() is idempotent but not free (PRAGMA + several statements) —
+        // a marker file means it only actually runs once per deploy instead of
+        // on every single request, which was adding real latency to every API
+        // call and page load.
+        $marker = CMS_ROOT . '/data/.migrated-v2';
+        if (!file_exists($marker)) {
+            migrate($pdo);
+            file_put_contents($marker, date('c'));
+        }
     }
     return $pdo;
 }
 
-// Runs on every request, cheap and idempotent (checks before altering) so
-// deploying new PHP is always enough — never need a separate manual
-// migration step against the live SQLite file.
+// Idempotent (checks before altering) so it's always safe to run again —
+// bump the marker filename above (e.g. .migrated-v3) if you add a new
+// migration step here later, so it actually re-runs once.
 function migrate(PDO $pdo): void {
     $cols = $pdo->query("PRAGMA table_info(posts)")->fetchAll(PDO::FETCH_COLUMN, 1);
     if (!in_array('scheduled_at', $cols, true)) {

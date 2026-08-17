@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/images/origina.png" sizes="32x32" type="image/png">
 <title id="pageTitle">Pressefy — Blog</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/dark-chrome.css">
 </head>
 <body class="pf-dark">
@@ -166,6 +167,14 @@
     return Math.max(1, Math.round(words / 200));
   }
   function renderBody(content) {
+    // post content is author-controlled (only writable via admin login or an
+    // Application Password, never public input), and some posts are already
+    // written with real HTML paragraph tags — render as-is rather than
+    // escaping it, which would just print the tags as literal text. Plain-text
+    // posts (no tags at all) still get paragraph-split for readability.
+    if (/<\s*(p|div|h[1-6]|ul|ol|blockquote)[\s>]/i.test(content)) {
+      return content;
+    }
     return content.split(/\n\s*\n/).map(function(p){ return '<p>' + esc(p.trim()).replace(/\n/g, '<br>') + '</p>'; }).join('');
   }
 
