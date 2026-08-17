@@ -187,4 +187,15 @@ body.pf-dark .popup-content h2,body.pf-dark .popup-content h3{color:var(--hi) !i
 body.pf-dark .popup-content p{color:var(--lo) !important}
 body.pf-dark .verified{background:rgba(52,230,207,.15) !important;color:var(--teal) !important}
 body.pf-dark .not-verified{background:rgba(255,99,99,.15) !important;color:#ff8080 !important}
+
+/* ---------------- Bootstrap Terms/Privacy modals: these keep their original
+   light card styling on purpose (readable printed-document look), so undo
+   the page-wide dark text-color cascade specifically inside .modal-body -
+   without this, h1-h6 inherit var(--hi) (near-white) against the modal's
+   white background and become almost invisible */
+body.pf-dark .modal-content{background:#fff !important}
+body.pf-dark .modal-body h1,body.pf-dark .modal-body h2,body.pf-dark .modal-body h3,
+body.pf-dark .modal-body h4,body.pf-dark .modal-body h5,body.pf-dark .modal-body h6{color:#1a1a1a !important}
+body.pf-dark .modal-body p,body.pf-dark .modal-body li,body.pf-dark .modal-body span{color:#444 !important}
+body.pf-dark .modal-body strong{color:#1a1a1a !important}
 @media (max-width:480px){ .pf-foot-grid{grid-template-columns:1fr} }
