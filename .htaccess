@@ -1,0 +1,10 @@
+<IfModule mod_headers.c>
+  # HTML pages must always revalidate with the origin before being served from
+  # cache - prevents visitors (and us, mid-deploy) from seeing a stale page
+  # after an update. JS/CSS/images are untouched and keep their existing
+  # longer cache lifetimes since those already have far less "gets edited and
+  # needs to be seen immediately" churn than the HTML itself.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
