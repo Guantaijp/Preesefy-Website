@@ -293,7 +293,7 @@
       <span class="brand-mark"><img src="assets/images/origina.webp" alt="Pressefy" width="60" height="60"></span>
       <span><span class="word">Pressefy</span><span class="tag">PR NEWS WIRE</span></span>
     </a>
-    <nav class="navlinks"><a href="#packages">Packages</a><a href="#blog">Blog</a><a href="ppm-services.html">About</a><a href="team.html">Team</a><a href="team-verification.html">Verified</a><a href="content-elements.html">Guide</a><a href="prtemplates.html">PR Templates</a></nav>
+    <nav class="navlinks"><a href="#packages">Packages</a><a href="blog.html">Blog</a><a href="ppm-services.html">About</a><a href="team.html">Team</a><a href="team-verification.html">Verified</a><a href="content-elements.html">Guide</a><a href="prtemplates.html">PR Templates</a></nav>
     <div class="navutil">
       <a class="cart-ico cart-btn" href="cart.html" aria-label="Cart"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span class="badge">0</span></a>
       <a class="order-status" href="#" id="orderStatusLink">Order status</a>
@@ -424,7 +424,7 @@
 
 <section class="blog wrap" id="blog">
   <div class="eyebrow">From the newsroom</div>
-  <h2 class="h2 disp">Blog</h2>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px"><h2 class="h2 disp">Blog</h2><a href="blog.html" style="color:var(--teal);font-size:13.5px;font-weight:700">See more &rarr;</a></div>
   <div class="bento" id="blogBento">
     <div class="post feat tilt-card" style="--c:var(--main)"><div class="ring"></div><div class="ring2"></div><div class="cat">Loading</div><h4 class="disp">Fetching the latest from the newsroom…</h4><p>&nbsp;</p><div class="meta mono">&nbsp;</div></div>
   </div>
@@ -461,7 +461,7 @@
       </div>
       <div><h5>Company</h5><ul><li><a href="ppm-services.html">About us</a></li><li><a href="team.html">Team</a></li><li><a href="team-verification.html">Verified</a></li><li><a href="content-elements.html">Guide</a></li></ul></div>
       <div><h5>Shop</h5><ul><li><a href="#packages">Packages</a></li><li><a href="cart.html">Cart</a></li><li><a href="checkout.html">Checkout</a></li><li><a href="#" id="orderStatusLinkFooter">Order status</a></li></ul></div>
-      <div><h5>Newsroom</h5><ul><li><a href="#blog">Blog</a></li><li><a href="prtemplates.html">PR Templates</a></li><li><a href="mailto:partners@pressefy.com">partners@pressefy.com</a></li></ul></div>
+      <div><h5>Newsroom</h5><ul><li><a href="blog.html">Blog</a></li><li><a href="prtemplates.html">PR Templates</a></li><li><a href="mailto:partners@pressefy.com">partners@pressefy.com</a></li></ul></div>
     </div>
     <div class="foot-bottom"><span>© 2026 Pressefy — All rights reserved</span><span><a href="#">Terms &amp; Conditions</a> · <a href="#">Privacy Policy</a></span></div>
   </div>
@@ -924,11 +924,11 @@ function pressefyAddToCart(btn) {
         var color = catColor[(p.category || '').toLowerCase()] || fallback[i % fallback.length];
         var img = p.featured_image ? '<div class="post-img" style="background-image:url(\'' + p.featured_image + '\')"></div>' : '<div class="no-img"><div class="ring"></div><div class="ring2"></div></div>';
         var feat = i === 0 ? ' feat' : '';
-        return '<div class="post' + feat + ' tilt-card" style="--c:' + color + '">' + img +
+        return '<a class="post' + feat + ' tilt-card" href="post.html?slug=' + encodeURIComponent(p.slug) + '" style="--c:' + color + '">' + img +
           '<div class="post-body"><div class="cat">' + (p.category || 'Newsroom') + '</div>' +
           '<h4 class="disp">' + p.title + '</h4>' +
           '<p>' + (p.excerpt || '') + '</p>' +
-          '<div class="meta mono">' + formatDate(p.created_at) + ' · ' + readMins(p.excerpt) + ' MIN</div></div></div>';
+          '<div class="meta mono">' + formatDate(p.created_at) + ' · ' + readMins(p.excerpt) + ' MIN</div></div></a>';
       }).join('');
     })
     .catch(function(){
@@ -1074,5 +1074,6 @@ function pressefyAddToCart(btn) {
   });
 })();
 </script>
+<script src="assets/js/site-forms.js"></script>
 </body>
 </html>

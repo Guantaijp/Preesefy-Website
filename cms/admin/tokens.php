@@ -27,10 +27,7 @@ $tokens = db()->query('SELECT id, label, created_at, revoked FROM tokens ORDER B
 <html>
 <head><meta charset="utf-8"><title>Pressefy CMS — Application Passwords</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<header class="bar">
-  <strong>Pressefy CMS</strong>
-  <nav><a href="index.php">Posts</a><a href="tokens.php">Application Passwords</a><a href="logout.php">Log out</a></nav>
-</header>
+<?php $active = 'tokens'; require __DIR__ . '/_nav.php'; ?>
 <main>
   <h1>Application Passwords</h1>
   <p class="dim">Each one lets a single AI agent or script create/edit/delete posts and upload images through the API — without sharing your admin login. Revoke one at any time without affecting the others.</p>

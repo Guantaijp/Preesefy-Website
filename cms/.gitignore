@@ -1,4 +1,5 @@
 data/*.sqlite
+data/cache/**
 uploads/**
 !uploads/.htaccess
 !uploads/.gitkeep
