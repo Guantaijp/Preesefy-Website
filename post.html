@@ -166,6 +166,16 @@
     var words = (text || '').split(/\s+/).filter(Boolean).length;
     return Math.max(1, Math.round(words / 200));
   }
+  function setMetaDescription(text) {
+    if (!text) return;
+    var tag = document.querySelector('meta[name="description"]');
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute('name', 'description');
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', text);
+  }
   function renderBody(content) {
     // post content is author-controlled (only writable via admin login or an
     // Application Password, never public input), and some posts are already
@@ -190,6 +200,7 @@
           return;
         }
         document.getElementById('pageTitle').textContent = p.title + ' — Pressefy Blog';
+        setMetaDescription(p.excerpt);
         var img = p.featured_image ? '<img class="pf-post-hero-img" src="' + p.featured_image + '" alt="' + esc(p.title) + '">' : '';
         wrap.innerHTML =
           '<div class="pf-page-hero" style="padding-left:0;padding-right:0">' +
