@@ -80,8 +80,8 @@ if ($resource === 'posts') {
         $cached = cacheGet('posts-list', 60);
         if ($cached !== null) respond(['posts' => $cached]);
         $stmt = db()->query(
-            "SELECT id, slug, title, excerpt, featured_image, category, status, views, created_at, updated_at
-             FROM posts WHERE status = 'published' AND deleted_at IS NULL ORDER BY created_at DESC"
+            "SELECT id, slug, title, excerpt, featured_image, category, status, views, created_at, updated_at, scheduled_at
+             FROM posts WHERE status = 'published' AND deleted_at IS NULL ORDER BY COALESCE(scheduled_at, created_at) DESC"
         );
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         cacheSet('posts-list', $posts);

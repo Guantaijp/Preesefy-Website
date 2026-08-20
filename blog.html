@@ -185,7 +185,7 @@
           '<div class="pf-cat">' + (p.category || 'Newsroom') + '</div>' +
           '<h3>' + p.title + '</h3>' +
           '<p>' + (p.excerpt || '') + '</p>' +
-          '<div class="pf-meta">' + formatDate(p.created_at) + ' &middot; ' + readMins(p.excerpt) + ' MIN &middot; ' + (p.views || 0) + ' views</div>' +
+          '<div class="pf-meta">' + formatDate(p.scheduled_at || p.created_at) + ' &middot; ' + readMins(p.excerpt) + ' MIN &middot; ' + (p.views || 0) + ' views</div>' +
           '</div></a>';
       }).join('');
     })

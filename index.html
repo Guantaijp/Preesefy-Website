@@ -928,7 +928,7 @@ function pressefyAddToCart(btn) {
           '<div class="post-body"><div class="cat">' + (p.category || 'Newsroom') + '</div>' +
           '<h4 class="disp">' + p.title + '</h4>' +
           '<p>' + (p.excerpt || '') + '</p>' +
-          '<div class="meta mono">' + formatDate(p.created_at) + ' · ' + readMins(p.excerpt) + ' MIN</div></div></a>';
+          '<div class="meta mono">' + formatDate(p.scheduled_at || p.created_at) + ' · ' + readMins(p.excerpt) + ' MIN</div></div></a>';
       }).join('');
     })
     .catch(function(){
